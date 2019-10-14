@@ -8,8 +8,8 @@
     <div class="float-right">
       <a [routerLink]="'/forgot-password'" class="button button-outline">Recordar contraseña</a>
     </div>
-    <button [disabled]="loginForm.invalid" class="button">
+    <button [disabled]="loginForm.invalid || running" class="button ld-over-inverse" [class.running]="running">
       Login
-    </button>
+      <div [hidden]="running" class="ld ld-ball ld-flip"></div></button>
   </fieldset>
 </form>

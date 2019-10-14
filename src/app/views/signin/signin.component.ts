@@ -8,6 +8,7 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent {
+  running: boolean = false;
 
   email = new FormControl('', [
     Validators.required,
@@ -24,11 +25,14 @@ export class SigninComponent {
 
   constructor(
     private builder: FormBuilder,
+    private router: Router,
     private authenticationService: AuthenticationService) { }
 
   login() {
+    this.running = true;
     this.authenticationService.login(this.loginForm.value)
     .then(user => {
+      this.running = false;
       if (!user) {
         alert('Usuario o contraseña inválida');
       } else {
