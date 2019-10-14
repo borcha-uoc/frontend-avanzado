@@ -23,6 +23,14 @@ export class AuthenticationService {
     return this.currentUser;
   }
 
+  async recoverPassword(email): Promise<any> {
+    const users = await this.getUsers();
+    // Mock response from backend:
+    return users.some(
+      (user: any) => user.email === email
+    );
+  }
+
   private async getUsers() {
     return this.http.get<User[]>(this.base_url + this.users_endpoint).toPromise();
   }
