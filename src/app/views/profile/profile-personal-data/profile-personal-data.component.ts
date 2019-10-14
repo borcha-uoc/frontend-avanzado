@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { of } from 'rxjs';
 import { User } from 'src/app/shared/models/user.model';
 import { DictionaryService } from 'src/app/shared/services/dictionary.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service'
@@ -13,6 +14,7 @@ import { validate } from 'src/app/shared/validators/validateSpanishId.js'
 export class ProfilePersonalDataComponent {
   user: User;
   personalDataForm: FormGroup;
+  saving = false;
 
   documentTypes = [];
   provinces = [];
@@ -72,8 +74,10 @@ export class ProfilePersonalDataComponent {
   }
 
   save() {
+    this.saving = true;
     this.authenticationService.saveUser(this.personalDataForm.value)
     .then(() => {
+      this.saving = false;
       alert('Datos guardados correctamente');
     });
   }

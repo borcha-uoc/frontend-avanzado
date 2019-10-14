@@ -87,7 +87,8 @@
   <div class="float-right">
     <a [routerLink]="'/profile'" class="button button-outline">Volver</a>
   </div>
-  <button [disabled]="personalDataForm.invalid" class="button">
+  <button [disabled]="personalDataForm.invalid || saving" class="button ld-over-inverse" [class.running]="saving">
     Guardar
+    <div class="ld ld-ball ld-flip"></div>
   </button>
 </form>
