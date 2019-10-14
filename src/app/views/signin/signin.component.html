@@ -1,3 +1,15 @@
-<p>
-  signin works!
-</p>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <fieldset>
+    <img src="assets/uoc-logo.png" alt="Logo de la UOC">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" [formControl]="email">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" [formControl]="password">
+    <div class="float-right">
+      <a [routerLink]="'/forgot-password'" class="button button-outline">Recordar contraseña</a>
+    </div>
+    <button [disabled]="loginForm.invalid" class="button">
+      Login
+    </button>
+  </fieldset>
+</form>
