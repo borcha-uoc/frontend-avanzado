@@ -1,1 +1,76 @@
-<p>profile-personal-data works!</p>
+<h1>Datos personales</h1>
+
+<form [formGroup]="personalDataForm" (ngSubmit)="save()">
+  <div class="row">
+    <div class="column column-40">
+      <label for="name">Nombre</label>
+      <input formControlName="name" type="text" id="name" name="name">
+    </div>
+    <div class="column column-60">
+      <label for="surname">Apellidos</label>
+      <input formControlName="surname" type="text" id="surname" name="surname">
+    </div>
+  </div>
+  <div class="row">
+    <div class="column column-25">
+      <label for="birthdate">Fecha de nacimiento</label>
+      <input formControlName="birthdate" type="text" id="birthdate" name="birthdate">
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <label for="phone">Teléfono</label>
+      <input formControlName="phone" type="text" id="phone" name="phone">
+    </div>
+    <div class="column">
+      <label for="phone2">Teléfono 2</label>
+      <input formControlName="phone2" type="text" id="phone2" name="phone2">
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <label for="documentType">Tipo documento</label>
+      <select>
+      </select>
+    </div>
+    <div class="column">
+      <label for="documentNumber">Número</label>
+      <input formControlName="documentNumber" type="text" id="documentNumber" name="documentNumber">
+    </div>
+  </div>
+  <ng-container formGroupName="address">
+  <label for="street">Dirección</label>
+  <input formControlName="street" type="text" id="street" name="street">      
+  <div class="row">
+    <div class="column">
+      <label for="province">Provincia</label>
+      <select>
+      </select>
+    </div>
+    <div class="column">
+      <label for="municipe">Municipio</label>
+      <select>
+      </select>
+    </div>
+  </div>
+  </ng-container>
+  <div class="row">
+    <div class="column column-25">
+      <label for="license">Permiso de conducir</label>
+      <input formControlName="license" type="text" id="license" name="license">
+    </div>
+  </div>
+  <label for="aboutMe">Sobre mí</label>
+  <textarea formControlName="aboutMe" id="aboutMe" name="aboutMe"></textarea>
+  <label for="otherCompetences">Otras competencias</label>
+  <textarea formControlName="otherCompetences" id="otherCompetences" name="otherCompetences"></textarea>
+
+  <hr>
+
+  <div class="float-right">
+    <a [routerLink]="'/profile'" class="button button-outline">Volver</a>
+  </div>
+  <button [disabled]="personalDataForm.invalid" class="button">
+    Guardar
+  </button>
+</form>
