@@ -1,1 +1,31 @@
-<p>profile-languages works!</p>
+<h1>Idiomas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nivel</th>
+      <th>Idioma</th>
+      <th>Fecha</th>
+      <th class="acciones">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let language of user.languages">
+      <td>{{language.level.name}}</td>
+      <td>{{language.name.name}}</td>
+      <td>{{language.date}}</td>
+      <td>
+        <a (click)="edit(language)" class="button button-small button-outline">Editar</a>
+        <a (click)="remove(language)" class="button button-small button-outline">Eliminar</a>
+      </td>
+    </tr>
+    <tr *ngIf="user.languages.length == 0">
+      <td colspan="4">No hay información sobre idiomas.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="float-right">
+  <a [routerLink]="'/profile'" class="button button-outline">Volver</a>
+</div>
+<a [routerLink]="'/studies/new'" class="button">Nuevo</a>
