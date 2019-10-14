@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { User } from 'src/app/shared/models/user.model';
 import { DictionaryService } from 'src/app/shared/services/dictionary.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service'
+import { validate } from 'src/app/shared/validators/validateSpanishId.js'
 
 @Component({
   selector: 'app-profile-personal-data',
@@ -47,7 +48,8 @@ export class ProfilePersonalDataComponent {
       license: [this.user.license],
       aboutMe: [this.user.aboutMe],
       otherCompetences: [this.user.otherCompetences]
-    });
+    },
+    { validators: validateDocumentNumber });
 
     // Cargar de forma asíncrona el total de las opciones de los desplegables
     // y mantener el valor actual tras rellenar todas las opciones disponbiles
@@ -109,6 +111,17 @@ function validDate(c: FormControl) {
     const chunks = t.split('/');
     return !Date.parse(`chunks[2]-chunks[1]-chunks[0]`);
   }
+}
+
 let validPhoneNumber = Validators.pattern(/^\+?[0-9 ]+$|^$/);
 
+function validateDocumentNumber(group: FormGroup) {
+  const documentType = group.get('documentType');
+  const documentNumber = group.get('documentNumber');  
+
+  if (documentType.value && documentType.value.name == 'NIF/NIE' && documentNumber.value.length > 0 && !validate(documentNumber.value).valid) {
+    return { nif : { valid: false }};
+  }
+
+  return null;
 }

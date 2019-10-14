@@ -48,6 +48,7 @@
     <div class="column">
       <label for="documentNumber">Número</label>
       <input formControlName="documentNumber" type="text" id="documentNumber" name="documentNumber">
+      <div *ngIf="error(null, 'nif')" class="error-message">El NIF/NIE no es válido</div>
     </div>
   </div>
   <ng-container formGroupName="address">
