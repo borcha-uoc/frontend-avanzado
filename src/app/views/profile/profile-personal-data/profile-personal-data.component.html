@@ -30,7 +30,8 @@
   <div class="row">
     <div class="column">
       <label for="documentType">Tipo documento</label>
-      <select>
+      <select formControlName="documentType" id="documentType" name="documentType">
+        <option *ngFor="let documentType of documentTypes" [ngValue]="documentType">{{documentType.name}}</option>
       </select>
     </div>
     <div class="column">
@@ -44,12 +45,14 @@
   <div class="row">
     <div class="column">
       <label for="province">Provincia</label>
-      <select>
+      <select formControlName="province" id="province" name="province">
+        <option *ngFor="let province of provinces" [ngValue]="province">{{province.name}}</option>
       </select>
     </div>
     <div class="column">
       <label for="municipe">Municipio</label>
-      <select>
+      <select formControlName="municipe" id="municipe" name="municipe">
+        <option *ngFor="let municipe of municipes" [ngValue]="municipe">{{municipe.name}}</option>
       </select>
     </div>
   </div>

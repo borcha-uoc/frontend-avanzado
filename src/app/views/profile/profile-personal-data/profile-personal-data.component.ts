@@ -12,6 +12,9 @@ export class ProfilePersonalDataComponent {
   user: User;
   personalDataForm: FormGroup;
 
+  documentTypes = [];
+  provinces = [];
+  municipes = [];
   
 
   constructor(
@@ -19,6 +22,12 @@ export class ProfilePersonalDataComponent {
     private authenticationService: AuthenticationService) {
 
     this.user = authenticationService.currentUser;
+
+    // Establecer las posibles opciones de los desplegables con el valor actual
+    this.documentTypes = [this.user.documentType];
+    this.provinces = [this.user.address.province];
+    this.municipes = [this.user.address.municipe];
+
 
     this.personalDataForm = this.formBuilder.group({
       name: [this.user.name],
