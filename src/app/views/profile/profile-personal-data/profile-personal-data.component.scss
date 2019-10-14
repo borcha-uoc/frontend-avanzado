@@ -1,0 +1,14 @@
+.error-message {
+  color: red;
+  margin-top: -1rem;
+  padding-bottom: 1rem;
+  font-size: small;
+}
+
+input.ng-dirty.ng-invalid {
+  border-color: red !important;
+}
+
+textarea {
+  height: 11rem;
+}

@@ -5,26 +5,37 @@
     <div class="column column-40">
       <label for="name">Nombre</label>
       <input formControlName="name" type="text" id="name" name="name">
+      <div *ngIf="error('name', 'required')" class="error-message" >Campo obligatorio</div>
+      <div *ngIf="error('name', 'minlength')" class="error-message">El tamaño mínimo es de 3 caracteres</div>
+      <div *ngIf="error('name', 'maxlength')" class="error-message">El tamaño máximo es de 55 caracteres</div>
+      <div *ngIf="error('name', 'pattern')" class="error-message">Contiene caracteres inválidos</div>
     </div>
     <div class="column column-60">
       <label for="surname">Apellidos</label>
       <input formControlName="surname" type="text" id="surname" name="surname">
+      <div *ngIf="error('surname', 'required')" class="error-message" >Campo obligatorio</div>
+      <div *ngIf="error('surname', 'minlength')" class="error-message">El tamaño mínimo es de 3 caracteres</div>
+      <div *ngIf="error('surname', 'maxlength')" class="error-message">El tamaño máximo es de 55 caracteres</div>
+      <div *ngIf="error('surname', 'pattern')" class="error-message">Contiene caracteres inválidos</div>
     </div>
   </div>
   <div class="row">
     <div class="column column-25">
       <label for="birthdate">Fecha de nacimiento</label>
       <input formControlName="birthdate" type="text" id="birthdate" name="birthdate">
+      <div *ngIf="error('birthdate', 'validDate')" class="error-message">El formato de fecha debe ser DD/MM/YYYY</div>
     </div>
   </div>
   <div class="row">
     <div class="column">
       <label for="phone">Teléfono</label>
       <input formControlName="phone" type="text" id="phone" name="phone">
+      <div *ngIf="error('phone', 'pattern')" class="error-message">Número de teléfono no válido</div>
     </div>
     <div class="column">
       <label for="phone2">Teléfono 2</label>
       <input formControlName="phone2" type="text" id="phone2" name="phone2">
+      <div *ngIf="error('phone2', 'pattern')" class="error-message">Número de teléfono no válido</div>
     </div>
   </div>
   <div class="row">

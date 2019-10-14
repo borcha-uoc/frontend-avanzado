@@ -32,11 +32,11 @@ export class ProfilePersonalDataComponent {
 
 
     this.personalDataForm = this.formBuilder.group({
-      name: [this.user.name],
-      surname: [this.user.surname],
-      birthdate: [this.user.birthdate],
-      phone: [this.user.phone],
-      phone2: [this.user.phone2],
+      name: [this.user.name, validName],
+      surname: [this.user.surname, validName],
+      birthdate: [this.user.birthdate, validDate],
+      phone: [this.user.phone, validPhoneNumber],
+      phone2: [this.user.phone2, validPhoneNumber],
       documentType: [this.user.documentType],
       documentNumber: [this.user.documentNumber],
       address: this.formBuilder.group({
@@ -73,9 +73,42 @@ export class ProfilePersonalDataComponent {
     console.log(this.personalDataForm.value)
   }
 
+  error(field, errorType) {
+    let control = field ? this.personalDataForm.get(field) : this.personalDataForm;
+    return (control.dirty || control.touched) && control.invalid && control.errors[errorType];
+  }
+
   compareByUid(c1: any, c2:any): boolean {
     return c1 && c2 ? c1.uid === c2.uid : c1 === c2; 
   }
+}
+
+
+// Validadores
+
+let validName = Validators.compose([
+  Validators.minLength(3),
+  Validators.maxLength(55),
+  Validators.pattern('^[A-Za-zñáéíóúÑÁÉÍÓÚ -]+$'),
+  Validators.pattern('^[^ -].*'),
+  Validators.pattern('.*[^ -]$'),
+  Validators.required
+]);
+
+
+function validDate(c: FormControl) {
+  const DDMMYYYY_REGEXP = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$|^$/;
+
+  return DDMMYYYY_REGEXP.test(c.value) && validDate(c.value) ? null : {
+    validDate: {
+      valid: false
+    }
+  };
+
+  function validDate(t: string) {
+    const chunks = t.split('/');
+    return !Date.parse(`chunks[2]-chunks[1]-chunks[0]`);
   }
+let validPhoneNumber = Validators.pattern(/^\+?[0-9 ]+$|^$/);
 
 }
