@@ -18,53 +18,27 @@ export const rootRouterConfig: Routes = [
   {
     path: "forgot-password",
     loadChildren: () =>
-      import("./views/forgot-password/forgot-password.module").then(
-        m => m.ForgotPasswordModule
-      ),
+      import("./views/forgot-password/forgot-password.module").then(m => m.ForgotPasswordModule),
     data: { title: "Forgot Password" }
   },
   {
-    path: "signup",
+    path: "dashboard",
     loadChildren: () =>
-      import("./views/signup/signup.module").then(m => m.SignupModule),
-    data: { title: "Signup" }
+      import("./views/dashboard/dashboard.module").then(m => m.DashboardModule),
+    data: { title: "Dashboard", breadcrumb: "DASHBOARD" }
   },
   {
-    path: "admin",
-    /*  component: AdminLayoutComponent, */
-    /* canActivate: [AuthGuard], */
-    children: [
-      {
-        path: "dashboard",
-        loadChildren: () =>
-          import("./views/dashboard/dashboard.module").then(
-            m => m.DashboardModule
-          ),
+    path: "profile",
+    loadChildren: () =>
+      import("./views/profile/profile.module").then(m => m.ProfileModule),
+    data: { title: "Material", breadcrumb: "MATERIAL" }
+  },
 
-        data: { title: "Dashboard", breadcrumb: "DASHBOARD" }
-      },
-      {
-        loadChildren: () =>
-          import("./views/favorites/favorites.module").then(
-            m => m.FavoritesModule
-          ),
-
-        data: { title: "Favorites", breadcrumb: "FAVORITES" }
-      },
-      {
-        path: "profile",
-        loadChildren: () =>
-          import("./views/profile/profile.module").then(m => m.ProfileModule),
-        data: { title: "Material", breadcrumb: "MATERIAL" }
-      },
-
-      {
-        path: "offers",
-        loadChildren: () =>
-          import("./views/offers/offers.module").then(m => m.OffersModule),
-        data: { title: "Offers", breadcrumb: "Offers" }
-      }
-    ]
+  {
+    path: "offers",
+    loadChildren: () =>
+      import("./views/offers/offers.module").then(m => m.OffersModule),
+    data: { title: "Offers", breadcrumb: "Offers" }
   },
   {
     path: "**",
