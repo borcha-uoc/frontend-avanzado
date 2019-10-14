@@ -50,21 +50,31 @@ export class ProfilePersonalDataComponent {
     });
 
     // Cargar de forma asíncrona el total de las opciones de los desplegables
+    // y mantener el valor actual tras rellenar todas las opciones disponbiles
     this.dictionaryService.getDocumentTypes().then(documentTypes => {
       this.documentTypes = documentTypes;
+      this.personalDataForm.controls.documentType.patchValue(this.user.documentType);
     });
 
     this.dictionaryService.getProvinces().then(provinces => {
       this.provinces = provinces;
+      let address = <FormGroup>this.personalDataForm.controls.address;
+      address.controls.province.patchValue(this.user.address.province);
     });
 
     this.dictionaryService.getMunicipes().then(municipes => {
       this.municipes = municipes;
+      let address = <FormGroup>this.personalDataForm.controls.address;
+      address.controls.municipe.patchValue(this.user.address.municipe);
     });
   }
 
   save() {
     console.log(this.personalDataForm.value)
+  }
+
+  compareByUid(c1: any, c2:any): boolean {
+    return c1 && c2 ? c1.uid === c2.uid : c1 === c2; 
   }
   }
 
