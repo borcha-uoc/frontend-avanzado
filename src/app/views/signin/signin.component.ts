@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 @Component({
   selector: 'app-signin',
@@ -21,10 +22,19 @@ export class SigninComponent {
     password: this.password
   });
 
-  constructor(private builder: FormBuilder) { }
+  constructor(
+    private builder: FormBuilder,
+    private authenticationService: AuthenticationService) { }
 
   login() {
-    console.log(this.loginForm.value);
+    this.authenticationService.login(this.loginForm.value)
+    .then(user => {
+      if (!user) {
+        alert('Usuario o contraseña inválida');
+      } else {
+        // navegar dashboard
+      }
+    })
   }
 
 }
