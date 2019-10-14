@@ -5,6 +5,34 @@ export class FakeBackendService implements InMemoryDbService {
   createDb() {
     const users: User[] = [
       {
+        password: "1234", // Only for mock
+        id: 2,
+        username: "borcha",
+        name: "Bruno",
+        surname: "Orcha García",
+        birthdate: "01/12/1982",
+        phone: "666777888",
+        phone2: "666888999",
+
+        email: "borcha@uoc.edu",
+        documentNumber: "11777111F",
+        documentType: { uid: 1, name: 'NIF/NIE' },
+        aboutMe: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, quod alias mollitia optio fuga nesciunt! Explicabo qui sed sequi! Temporibus similique laudantium delectus recusandae mollitia molestiae ullam, laboriosam ducimus facere!",
+        otherCompetences: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat at cumque consectetur nulla eius ratione sit quis accusamus provident unde reprehenderit, vero autem fugit totam repudiandae ipsum soluta assumenda voluptatum?",
+        license: "B1",
+        avatar_hash: 'https://api.adorable.io/avatars/156/borcha@uoc.edu.png',
+        address: {
+          street: 'Calle Falsa, 1',
+          province: { uid: 4, name: 'Cádiz' },
+          municipe: { uid: 1, name: 'Sanlúcar de Barrameda' }
+        },
+        roles: ['student'],
+        studies: [],
+        experiencies: [],
+        languages: [],
+        offers: []
+      },
+      {
         id: 1,
         username: 'carloscg',
         name: 'Carlos',
