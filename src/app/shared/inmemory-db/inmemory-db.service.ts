@@ -43,7 +43,7 @@ export class FakeBackendService implements InMemoryDbService {
         email: 'carlos.caballero@gmail.com',
         password: '1234',
         roles: ['student'],
-        documentType: { uid: 1, name: 'NIF' },
+        documentType: { uid: 1, name: 'NIF/NIE' },
         documentNumber: '26808956H',
         license: 'B1',
         aboutMe: 'LOREM IPSUM',
@@ -216,6 +216,26 @@ export class FakeBackendService implements InMemoryDbService {
         title: [{ uid: 6, name: 'Empresariales' }]
       }
     ];
-    return { users, offers };
+
+    const documentTypes: any[] = [
+      { uid: 0, name: 'Otro' },
+      { uid: 1, name: 'NIF/NIE' },
+      { uid: 2, name: 'Pasaporte' }
+    ];
+    const provinces: any[] = [
+      { uid: 1, name: 'Málaga' },
+      { uid: 2, name: 'Sevilla' },
+      { uid: 4, name: 'Cádiz' },
+      { uid: 5, name: 'Granada' }
+    ];
+    const municipes: any[] = [
+      { uid: 1, name: 'Sanlúcar de Barrameda' },
+      { uid: 6, name: 'Chiclana de la Frontera' },
+      { uid: 7, name: 'Estepona' },
+      { uid: 9, name: 'Motril' },
+      { uid: 10, name: 'Osuna' }
+    ];
+
+    return { users, offers, documentTypes, provinces, municipes };
   }
 }
