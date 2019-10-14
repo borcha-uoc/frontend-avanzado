@@ -7,13 +7,17 @@ import { ProfileComponent } from './profile.component';
 import { ProfilePersonalDataComponent } from './profile-personal-data/profile-personal-data.component';
 import { ProfileStudiesComponent } from './profile-studies/profile-studies.component';
 import { ProfileLanguagesComponent } from './profile-languages/profile-languages.component';
+import { ProfileStudiesEditComponent } from './profile-studies-edit/profile-studies-edit.component';
+import { ProfileLanguagesEditComponent } from './profile-languages-edit/profile-languages-edit.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
     ProfilePersonalDataComponent,
     ProfileStudiesComponent,
-    ProfileLanguagesComponent
+    ProfileLanguagesComponent,
+    ProfileStudiesEditComponent,
+    ProfileLanguagesEditComponent
   ],
   imports: [
     CommonModule,
