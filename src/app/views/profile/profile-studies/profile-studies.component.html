@@ -1,1 +1,33 @@
-<p>profile-studies works!</p>
+<h1>Formación Académica</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nivel</th>
+      <th>Título</th>
+      <th>Centro</th>
+      <th>Fecha</th>
+      <th class="acciones">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let study of user.studies">
+      <td>{{study.level.name}}</td>
+      <td>{{study.title.name}}</td>
+      <td>{{study.institution.name}}</td>
+      <td>{{study.date}}</td>
+      <td>
+      	<a (click)="edit(study)" class="button button-small button-outline">Editar</a>
+      	<a (click)="remove(study)" class="button button-small button-outline">Eliminar</a>
+      </td>
+    </tr>
+    <tr *ngIf="user.studies.length == 0">
+      <td colspan="5">No hay información sobre estudios.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="float-right">
+	<a [routerLink]="'/profile'" class="button button-outline">Volver</a>
+</div>
+<a [routerLink]="'/studies/new'" class="button">Nuevo</a>
