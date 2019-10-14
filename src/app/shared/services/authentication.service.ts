@@ -31,6 +31,11 @@ export class AuthenticationService {
     );
   }
 
+  async saveUser(data) {
+    this.currentUser = {...this.currentUser, ...data};
+    return this.http.put<User>(this.base_url + this.users_endpoint, this.currentUser).toPromise();
+  }
+
   private async getUsers() {
     return this.http.get<User[]>(this.base_url + this.users_endpoint).toPromise();
   }

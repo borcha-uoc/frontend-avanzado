@@ -72,7 +72,10 @@ export class ProfilePersonalDataComponent {
   }
 
   save() {
-    console.log(this.personalDataForm.value)
+    this.authenticationService.saveUser(this.personalDataForm.value)
+    .then(() => {
+      alert('Datos guardados correctamente');
+    });
   }
 
   error(field, errorType) {
