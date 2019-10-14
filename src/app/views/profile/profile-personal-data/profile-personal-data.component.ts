@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/shared/models/user.model';
+import { DictionaryService } from 'src/app/shared/services/dictionary.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service'
 
 @Component({
@@ -19,6 +20,7 @@ export class ProfilePersonalDataComponent {
 
   constructor(
     private formBuilder: FormBuilder,
+    private dictionaryService: DictionaryService,
     private authenticationService: AuthenticationService) {
 
     this.user = authenticationService.currentUser;
@@ -46,6 +48,20 @@ export class ProfilePersonalDataComponent {
       aboutMe: [this.user.aboutMe],
       otherCompetences: [this.user.otherCompetences]
     });
+
+    // Cargar de forma asíncrona el total de las opciones de los desplegables
+    this.dictionaryService.getDocumentTypes().then(documentTypes => {
+      this.documentTypes = documentTypes;
+    });
+
+    this.dictionaryService.getProvinces().then(provinces => {
+      this.provinces = provinces;
+    });
+
+    this.dictionaryService.getMunicipes().then(municipes => {
+      this.municipes = municipes;
+    });
+  }
 
   save() {
     console.log(this.personalDataForm.value)
