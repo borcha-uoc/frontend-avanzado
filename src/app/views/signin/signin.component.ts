@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 @Component({
@@ -36,7 +37,7 @@ export class SigninComponent {
       if (!user) {
         alert('Usuario o contraseña inválida');
       } else {
-        // navegar dashboard
+        this.router.navigate(['/dashboard']);
       }
     })
   }
