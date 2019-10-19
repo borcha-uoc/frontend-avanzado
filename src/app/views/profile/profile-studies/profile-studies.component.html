@@ -13,11 +13,11 @@
   <tbody>
     <tr *ngFor="let study of user.studies">
       <td>{{study.level.name}}</td>
-      <td>{{study.title.name}}</td>
-      <td>{{study.institution.name}}</td>
+      <td>{{study.title.name || study.title}}</td>
+      <td>{{study.institution.name || study.institution}}</td>
       <td>{{study.date}}</td>
       <td>
-      	<a (click)="edit(study)" class="button button-small button-outline">Editar</a>
+      	<a [routerLink]="[study.uid,'edit']" class="button button-small button-outline">Editar</a>
       	<a (click)="remove(study)" class="button button-small button-outline">Eliminar</a>
       </td>
     </tr>
@@ -30,4 +30,4 @@
 <div class="float-right">
 	<a [routerLink]="'/profile'" class="button button-outline">Volver</a>
 </div>
-<a [routerLink]="'/studies/new'" class="button">Nuevo</a>
+<a [routerLink]="'new'" class="button">Nuevo</a>
