@@ -27,7 +27,47 @@ export class FakeBackendService implements InMemoryDbService {
           municipe: { uid: 1, name: 'Sanlúcar de Barrameda' }
         },
         roles: ['student'],
-        studies: [],
+        studies: [
+          {
+            uid: 1,
+            level: { uid: 1, name: 'Ciclo Formativo' },
+            category: { uid: 2, name: 'Informática y comunicaciones' },
+            institution: {
+              uid: 2,
+              name: 'IES Politécnico Jesús Marin'
+            },
+            title: {
+              uid: 2,
+              name: 'Administracion de sistemas informaticos y redes'
+            },
+            grade: {
+              uid: 3,
+              name: 'Ciclo Formativo de Grado Superior'
+            },
+            date: '30/06/2005',
+            dual: false,
+            bilingue: true,
+            certificate: true
+          },
+          {
+            uid: 2,
+            institution: {
+              uid: 2,
+              name: 'IES Politécnico Jesús Marin'
+            },
+            category: { uid: 2, name: 'Informática y comunicaciones' },
+            level: { uid: 1, name: 'Ciclo Formativo' },
+            title: {
+              uid: 1,
+              name: 'Técnico Superior en Desarrollo de Aplicaciones Web'
+            },
+            grade: { uid: 3, name: 'Ciclo Formativo de Grado Superior' },
+            date: '30/06/2007',
+            dual: true,
+            bilingue: false,
+            certificate: false
+          }
+        ],
         experiencies: [],
         languages: [],
         offers: []
@@ -236,6 +276,40 @@ export class FakeBackendService implements InMemoryDbService {
       { uid: 10, name: 'Osuna' }
     ];
 
-    return { users, offers, documentTypes, provinces, municipes };
+    const institutions: any[] = [
+      { uid: 1, name: 'IES 1' },
+      { uid: 2, name: 'IES Politécnico Jesús Marin' },
+      { uid: 3, name: 'IES 3' },
+    ];
+
+    const categories: any[] = [
+      { uid: 1, name: 'Categoria1' },
+      { uid: 2, name: 'Informática y comunicaciones' },
+      { uid: 3, name: 'Categoria3' },
+    ];
+
+    const grades: any[] = [
+      { uid: 1, name: 'Grado1' },
+      { uid: 2, name: 'Grado2' },
+      { uid: 3, name: 'Ciclo Formativo de Grado Superior' },
+    ];
+
+    const titleStudies: any[] = [
+      { uid: 1, name: 'Estudio1' },
+      { uid: 2, name: 'Administracion de sistemas informaticos y redes' },
+      { uid: 3, name: 'Estudio3' },
+    ];
+
+    return {
+      users,
+      offers,
+      documentTypes,
+      provinces,
+      municipes,
+      institutions,
+      categories,
+      grades,
+      titleStudies,
+    };
   }
 }

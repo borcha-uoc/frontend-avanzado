@@ -8,6 +8,7 @@ import { InMemoryWebApiModule } from "angular-in-memory-web-api";
 import { FakeBackendService } from "./shared/inmemory-db/inmemory-db.service";
 import { AuthenticationService } from "./shared/services/authentication.service";
 import { DictionaryService } from "./shared/services/dictionary.service";
+import { StudiesService } from "./shared/services/studies.service";
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { DictionaryService } from "./shared/services/dictionary.service";
     InMemoryWebApiModule.forRoot(FakeBackendService, { delay: 2000 })
   ],
   declarations: [AppComponent],
-  providers: [AuthenticationService, DictionaryService],
+  providers: [AuthenticationService, DictionaryService, StudiesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
