@@ -54,7 +54,30 @@ export class ProfileLanguagesEditComponent {
   }
 
   save() {
-    console.log(this.languagesForm.value);
+    let user = this.authenticationService.currentUser;
+    let language = this.languagesForm.value;
+
+    if (this.editing) {
+      language.id = parseInt(this.route.snapshot.params.id);
+
+      // Reemplazamos el elementos que estamos editando
+      user.languages.forEach((element, index) => {
+        if(element.id === language.id) {
+          user.languages[index] = language;
+        }
+      });
+    } else {
+      // Generamos un id distinto cada vez que guardemos
+      language.id = new Date().getTime();
+      // Agregamo el elemento
+      user.languages.push(language);
+    }
+    this.authenticationService.saveUser(user)
+    .then(() => {
+      this.saving = false;
+      alert('Datos guardados correctamente');
+      this.router.navigate(['/profile/languages']);
+    });
   }
 
   compareById(c1: any, c2:any): boolean {
