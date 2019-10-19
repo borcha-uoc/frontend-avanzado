@@ -14,6 +14,7 @@ export class ProfileLanguagesEditComponent {
 
   languageNames;
   languageLevels;
+  otherOption = {id:-1, name: 'Otro'};
 
   editing: boolean;
   languagesForm: FormGroup;
@@ -26,7 +27,11 @@ export class ProfileLanguagesEditComponent {
     private languagesService: LanguagesService)
   {
     // Cargar opciones de los desplegables
-    this.languagesService.getLanguageNames().then(languageNames => this.languageNames = languageNames);
+    this.languagesService.getLanguageNames().then(languageNames => {
+      this.languageNames = languageNames;
+      // Agregamos la opción otros
+      this.languageNames.push(this.otherOption);
+    });
     this.languagesService.getLanguageLevels().then(languageLevels => this.languageLevels = languageLevels);
 
     let language = new Language();
@@ -40,6 +45,7 @@ export class ProfileLanguagesEditComponent {
     }
 
     this.languagesForm = this.createFormGroup(language);
+    this.nameChanged();
   }
 
   createFormGroup(language) {
@@ -51,6 +57,16 @@ export class ProfileLanguagesEditComponent {
     });
   }
 
+  get showOther() {
+    return this.languagesForm.controls.name.value == this.otherOption;
+  }
+
+  nameChanged() {
+    if (this.showOther) {
+      this.languagesForm.controls.other.enable();
+    } else {
+      this.languagesForm.controls.other.disable();
+    }
   }
 
   save() {

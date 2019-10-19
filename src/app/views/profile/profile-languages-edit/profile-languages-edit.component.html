@@ -5,9 +5,15 @@
   <div class="row">
     <div class="column">
       <label for="name">Idioma</label>
-      <select formControlName="name" id="name" name="name" [compareWith]="compareById">
+      <select formControlName="name" id="name" name="name" [compareWith]="compareById" (change)="nameChanged()">
         <option *ngFor="let nameValue of languageNames" [ngValue]="nameValue">{{nameValue.name}}</option>
       </select>
+    </div>
+  </div>
+  <div class="row" *ngIf="showOther">
+    <div class="column">
+      <label for="other">Indique el idioma</label>
+      <input formControlName="other" id="other" name="other" type="text">      
     </div>
   </div>
   <div class="row">
