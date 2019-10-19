@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/shared/models/user.model';
 import { DictionaryService } from 'src/app/shared/services/dictionary.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service'
@@ -21,6 +22,7 @@ export class ProfilePersonalDataComponent {
   
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private dictionaryService: DictionaryService,
     private authenticationService: AuthenticationService) {
@@ -78,6 +80,7 @@ export class ProfilePersonalDataComponent {
     .then(() => {
       this.saving = false;
       alert('Datos guardados correctamente');
+      this.router.navigate(['/profile']);
     });
   }
 
