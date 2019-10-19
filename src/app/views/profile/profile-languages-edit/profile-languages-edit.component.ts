@@ -70,9 +70,19 @@ export class ProfileLanguagesEditComponent {
     }
   }
 
-  save() {
+  async save() {
     let user = this.authenticationService.currentUser;
     let language = this.languagesForm.value;
+
+    // Tratar opción otros
+    if (this.showOther) {
+      let newLanguageName = await this.languagesService.newLanguageName({
+        id: new Date().getTime(),
+        name:language.other
+      });
+      delete language.other
+      language.name = newLanguageName;
+    }
 
     if (this.editing) {
       language.id = parseInt(this.route.snapshot.params.id);
