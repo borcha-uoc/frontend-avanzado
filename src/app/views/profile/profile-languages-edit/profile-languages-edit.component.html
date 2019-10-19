@@ -5,23 +5,23 @@
   <div class="row">
     <div class="column">
       <label for="name">Idioma</label>
-      <select id="name" name="name">
-        <option>opcion</option>
+      <select formControlName="name" id="name" name="name" [compareWith]="compareById">
+        <option *ngFor="let nameValue of languageNames" [ngValue]="nameValue">{{nameValue.name}}</option>
       </select>
     </div>
   </div>
   <div class="row">
     <div class="column">
       <label for="level">Nivel</label>
-      <select id="level" name="level" >
-        <option>opcion</option>
+      <select formControlName="level" id="level" name="level" [compareWith]="compareById">
+        <option *ngFor="let levelValue of languageLevels" [ngValue]="levelValue">{{levelValue.name}}</option>
       </select>
     </div>
   </div>
   <div class="row">
     <div class="column">
       <label for="date">Fecha del título</label>
-      <input id="date" name="date" type="text">
+      <input formControlName="date" id="date" name="date" type="text">
     </div>
   </div>
   
