@@ -36,8 +36,8 @@
   <div class="float-right">
     <a [routerLink]="'/profile/languages'" class="button button-outline">Volver</a>
   </div>
-  <button *ngIf="!editing">Crear</button>
-  <button *ngIf="editing">Guardar</button>
+  <button *ngIf="!editing" [disabled]="languagesForm.invalid">Crear</button>
+  <button *ngIf="editing" [disabled]="languagesForm.invalid">Guardar</button>
 </form>
 
 

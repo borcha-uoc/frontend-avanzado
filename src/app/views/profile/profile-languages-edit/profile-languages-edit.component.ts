@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service'
 import { Language, LanguageLevel, LanguageName } from 'src/app/shared/models/language.model';
 import { LanguagesService } from 'src/app/shared/services/languages.service'
+import { validDate } from 'src/app/shared/validators/validators'
 
 @Component({
   selector: 'app-profile-languages-edit',
@@ -50,10 +51,10 @@ export class ProfileLanguagesEditComponent {
 
   createFormGroup(language) {
     return this.formBuilder.group({
-      name: [language.name],
+      name: [language.name, Validators.required],
       other: [null, Validators.required],
-      level: [language.level],
-      date: [language.date],
+      level: [language.level, Validators.required],
+      date: [language.date,  [Validators.required, validDate]],
     });
   }
 
