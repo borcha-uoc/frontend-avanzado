@@ -12,6 +12,7 @@ import { validDate } from 'src/app/shared/validators/validators'
   styleUrls: ['./profile-languages-edit.component.scss']
 })
 export class ProfileLanguagesEditComponent {
+  saving = false;
 
   languageNames;
   languageLevels;
@@ -71,6 +72,7 @@ export class ProfileLanguagesEditComponent {
   }
 
   async save() {
+    this.saving = true;
     let user = this.authenticationService.currentUser;
     let language = this.languagesForm.value;
 

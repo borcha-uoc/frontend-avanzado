@@ -41,8 +41,14 @@
   <div class="float-right">
     <a [routerLink]="'/profile/languages'" class="button button-outline">Volver</a>
   </div>
-  <button *ngIf="!editing" [disabled]="languagesForm.invalid">Crear</button>
-  <button *ngIf="editing" [disabled]="languagesForm.invalid">Guardar</button>
+  <button *ngIf="!editing" [disabled]="languagesForm.invalid || saving" class="button ld-over-inverse" [class.running]="saving">
+    Crear
+    <div class="ld ld-ball ld-flip"></div>
+  </button>
+  <button *ngIf="editing" [disabled]="languagesForm.invalid || saving" class="button ld-over-inverse" [class.running]="saving">
+    Guardar
+    <div class="ld ld-ball ld-flip"></div>
+  </button>
 </form>
 
 
