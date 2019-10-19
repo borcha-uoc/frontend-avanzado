@@ -17,7 +17,7 @@
       <td>{{study.institution.name || study.institution}}</td>
       <td>{{study.date}}</td>
       <td>
-      	<a [routerLink]="[study.uid,'edit']" class="button button-small button-outline">Editar</a>
+      	<a [routerLink]="[study.id,'edit']" class="button button-small button-outline">Editar</a>
       	<a (click)="remove(study)" class="button button-small button-outline">Eliminar</a>
       </td>
     </tr>

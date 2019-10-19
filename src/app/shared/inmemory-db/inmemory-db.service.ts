@@ -16,32 +16,32 @@ export class FakeBackendService implements InMemoryDbService {
 
         email: "borcha@uoc.edu",
         documentNumber: "11777111F",
-        documentType: { uid: 1, name: 'NIF/NIE' },
+        documentType: { id: 1, name: 'NIF/NIE' },
         aboutMe: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, quod alias mollitia optio fuga nesciunt! Explicabo qui sed sequi! Temporibus similique laudantium delectus recusandae mollitia molestiae ullam, laboriosam ducimus facere!",
         otherCompetences: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat at cumque consectetur nulla eius ratione sit quis accusamus provident unde reprehenderit, vero autem fugit totam repudiandae ipsum soluta assumenda voluptatum?",
         license: "B1",
         avatar_hash: 'https://api.adorable.io/avatars/156/borcha@uoc.edu.png',
         address: {
           street: 'Calle Falsa, 1',
-          province: { uid: 4, name: 'Cádiz' },
-          municipe: { uid: 1, name: 'Sanlúcar de Barrameda' }
+          province: { id: 4, name: 'Cádiz' },
+          municipe: { id: 1, name: 'Sanlúcar de Barrameda' }
         },
         roles: ['student'],
         studies: [
           {
-            uid: 1,
-            level: { uid: 1, name: 'Ciclo Formativo' },
-            category: { uid: 2, name: 'Informática y comunicaciones' },
+            id: 1,
+            level: { id: 1, name: 'Ciclo Formativo' },
+            category: { id: 2, name: 'Informática y comunicaciones' },
             institution: {
-              uid: 2,
+              id: 2,
               name: 'IES Politécnico Jesús Marin'
             },
             title: {
-              uid: 2,
+              id: 2,
               name: 'Administracion de sistemas informaticos y redes'
             },
             grade: {
-              uid: 3,
+              id: 3,
               name: 'Ciclo Formativo de Grado Superior'
             },
             date: '30/06/2005',
@@ -50,18 +50,18 @@ export class FakeBackendService implements InMemoryDbService {
             certificate: true
           },
           {
-            uid: 2,
+            id: 2,
             institution: {
-              uid: 2,
+              id: 2,
               name: 'IES Politécnico Jesús Marin'
             },
-            category: { uid: 2, name: 'Informática y comunicaciones' },
-            level: { uid: 1, name: 'Ciclo Formativo' },
+            category: { id: 2, name: 'Informática y comunicaciones' },
+            level: { id: 1, name: 'Ciclo Formativo' },
             title: {
-              uid: 1,
+              id: 1,
               name: 'Técnico Superior en Desarrollo de Aplicaciones Web'
             },
-            grade: { uid: 3, name: 'Ciclo Formativo de Grado Superior' },
+            grade: { id: 3, name: 'Ciclo Formativo de Grado Superior' },
             date: '30/06/2007',
             dual: true,
             bilingue: false,
@@ -83,32 +83,32 @@ export class FakeBackendService implements InMemoryDbService {
         email: 'carlos.caballero@gmail.com',
         password: '1234',
         roles: ['student'],
-        documentType: { uid: 1, name: 'NIF/NIE' },
+        documentType: { id: 1, name: 'NIF/NIE' },
         documentNumber: '26808956H',
         license: 'B1',
         aboutMe: 'LOREM IPSUM',
         otherCompetences: 'LOREM IPSUM',
         address: {
           street: 'Urbanización las Areanas - 45',
-          province: { uid: 4, name: 'Cádiz' },
-          municipe: { uid: 6, name: 'Chiclana de la Frontera' }
+          province: { id: 4, name: 'Cádiz' },
+          municipe: { id: 6, name: 'Chiclana de la Frontera' }
         },
         avatar_hash: 'assets/img/perfil.png',
         studies: [
           {
-            uid: 1,
-            level: { uid: 1, name: 'Ciclo Formativo' },
-            category: { uid: 2, name: 'Informática y comunicaciones' },
+            id: 1,
+            level: { id: 1, name: 'Ciclo Formativo' },
+            category: { id: 2, name: 'Informática y comunicaciones' },
             institution: {
-              uid: 2,
+              id: 2,
               name: 'IES Politécnico Jesús Marin'
             },
             title: {
-              uid: 2,
+              id: 2,
               name: 'Administracion de sistemas informaticos y redes'
             },
             grade: {
-              uid: 3,
+              id: 3,
               name: 'Ciclo Formativo de Grado Superior'
             },
             date: '30/06/2005',
@@ -117,18 +117,18 @@ export class FakeBackendService implements InMemoryDbService {
             certificate: true
           },
           {
-            uid: 2,
+            id: 2,
             institution: {
-              uid: 2,
+              id: 2,
               name: 'IES Politécnico Jesús Marin'
             },
-            category: { uid: 2, name: 'Informática y comunicaciones' },
-            level: { uid: 1, name: 'Ciclo Formativo' },
+            category: { id: 2, name: 'Informática y comunicaciones' },
+            level: { id: 1, name: 'Ciclo Formativo' },
             title: {
-              uid: 1,
+              id: 1,
               name: 'Técnico Superior en Desarrollo de Aplicaciones Web'
             },
-            grade: { uid: 3, name: 'Ciclo Formativo de Grado Superior' },
+            grade: { id: 3, name: 'Ciclo Formativo de Grado Superior' },
             date: '30/06/2007',
             dual: true,
             bilingue: false,
@@ -138,15 +138,15 @@ export class FakeBackendService implements InMemoryDbService {
         experiencies: [],
         languages: [
           {
-            uid: 1,
-            level: { uid: 5, name: 'C1' },
-            name: { uid: 1, name: 'Inglés' },
+            id: 1,
+            level: { id: 5, name: 'C1' },
+            name: { id: 1, name: 'Inglés' },
             date: '30/06/2005'
           },
           {
-            uid: 2,
-            level: { uid: 4, name: 'B2' },
-            name: { uid: 2, name: 'Francés' },
+            id: 2,
+            level: { id: 4, name: 'B2' },
+            name: { id: 2, name: 'Francés' },
             date: '30/06/1998'
           }
         ],
@@ -189,26 +189,26 @@ export class FakeBackendService implements InMemoryDbService {
       {
         id: 1,
         company: {
-          uid: 33,
+          id: 33,
           name: 'Coritel'
         },
         job: {
           name: 'Programador Jr Java',
           description: 'Programación y prueba unitaria en Java'
         },
-        province: { uid: 1, name: 'Málaga' },
-        municipe: { uid: 7, name: 'Estepona' },
+        province: { id: 1, name: 'Málaga' },
+        municipe: { id: 7, name: 'Estepona' },
         date: '21/09/2006',
-        category: { uid: 2, name: 'Informática y Comunicaciones' },
+        category: { id: 2, name: 'Informática y Comunicaciones' },
         title: [
-          { uid: 1, name: 'Desarrollo Aplicaciones Web' },
-          { uid: 4, name: 'Desarrollo Aplicaciones Multiplataforma' }
+          { id: 1, name: 'Desarrollo Aplicaciones Web' },
+          { id: 4, name: 'Desarrollo Aplicaciones Multiplataforma' }
         ]
       },
       {
         id: 2,
         company: {
-          uid: 33,
+          id: 33,
           name: 'Coritel'
         },
         job: {
@@ -216,16 +216,16 @@ export class FakeBackendService implements InMemoryDbService {
           description:
             'Relaciones con los clientes y atención a las redes sociales.'
         },
-        province: { uid: 1, name: 'Málaga' },
-        municipe: { uid: 8, name: 'Campanillas (PTA)' },
+        province: { id: 1, name: 'Málaga' },
+        municipe: { id: 8, name: 'Campanillas (PTA)' },
         date: '21/09/2016',
-        category: { uid: 4, name: 'Comercio y Marketing' },
-        title: [{ uid: 5, name: 'Gestión Comercial y Empresarial' }]
+        category: { id: 4, name: 'Comercio y Marketing' },
+        title: [{ id: 5, name: 'Gestión Comercial y Empresarial' }]
       },
       {
         id: 3,
         company: {
-          uid: 33,
+          id: 33,
           name: 'Coritel'
         },
         job: {
@@ -233,71 +233,73 @@ export class FakeBackendService implements InMemoryDbService {
           description:
             'Análisis funcional y diseño técnico/detallado de componentes'
         },
-        province: { uid: 5, name: 'Granada' },
-        municipe: { uid: 9, name: 'Motril' },
+        province: { id: 5, name: 'Granada' },
+        municipe: { id: 9, name: 'Motril' },
         date: '11/07/2016',
-        category: { uid: 2, name: 'Informática y Comunicaciones' },
-        title: [{ uid: 4, name: 'Desarrollo Aplicaciones Multiplataforma' }]
+        category: { id: 2, name: 'Informática y Comunicaciones' },
+        title: [{ id: 4, name: 'Desarrollo Aplicaciones Multiplataforma' }]
       },
       {
         id: 4,
         company: {
-          uid: 35,
+          id: 35,
           name: 'Indra'
         },
         job: {
           name: 'Administrativo',
           description: 'Gestión de cartera de clientes.'
         },
-        province: { uid: 2, name: 'Sevilla' },
-        municipe: { uid: 10, name: 'Osuna' },
+        province: { id: 2, name: 'Sevilla' },
+        municipe: { id: 10, name: 'Osuna' },
         date: '01/12/2015',
-        category: { uid: 5, name: 'Administración y Gestión' },
-        title: [{ uid: 6, name: 'Empresariales' }]
+        category: { id: 5, name: 'Administración y Gestión' },
+        title: [{ id: 6, name: 'Empresariales' }]
       }
     ];
 
     const documentTypes: any[] = [
-      { uid: 0, name: 'Otro' },
-      { uid: 1, name: 'NIF/NIE' },
-      { uid: 2, name: 'Pasaporte' }
+      { id: 0, name: 'Otro' },
+      { id: 1, name: 'NIF/NIE' },
+      { id: 2, name: 'Pasaporte' }
     ];
     const provinces: any[] = [
-      { uid: 1, name: 'Málaga' },
-      { uid: 2, name: 'Sevilla' },
-      { uid: 4, name: 'Cádiz' },
-      { uid: 5, name: 'Granada' }
+      { id: 1, name: 'Málaga' },
+      { id: 2, name: 'Sevilla' },
+      { id: 4, name: 'Cádiz' },
+      { id: 5, name: 'Granada' }
     ];
     const municipes: any[] = [
-      { uid: 1, name: 'Sanlúcar de Barrameda' },
-      { uid: 6, name: 'Chiclana de la Frontera' },
-      { uid: 7, name: 'Estepona' },
-      { uid: 9, name: 'Motril' },
-      { uid: 10, name: 'Osuna' }
+      { id: 1, name: 'Sanlúcar de Barrameda' },
+      { id: 6, name: 'Chiclana de la Frontera' },
+      { id: 7, name: 'Estepona' },
+      { id: 9, name: 'Motril' },
+      { id: 10, name: 'Osuna' }
     ];
 
     const institutions: any[] = [
-      { uid: 1, name: 'IES 1' },
-      { uid: 2, name: 'IES Politécnico Jesús Marin' },
-      { uid: 3, name: 'IES 3' },
+      { id: 1, name: 'IES 1' },
+      { id: 2, name: 'IES Politécnico Jesús Marin' },
+      { id: 3, name: 'IES 3' },
     ];
 
     const categories: any[] = [
-      { uid: 1, name: 'Categoria1' },
-      { uid: 2, name: 'Informática y comunicaciones' },
-      { uid: 3, name: 'Categoria3' },
+      { id: 1, name: 'Categoria1' },
+      { id: 2, name: 'Informática y comunicaciones' },
+      { id: 3, name: 'Categoria3' },
     ];
 
     const grades: any[] = [
-      { uid: 1, name: 'Grado1' },
-      { uid: 2, name: 'Grado2' },
-      { uid: 3, name: 'Ciclo Formativo de Grado Superior' },
+      { id: 1, name: 'Grado1' },
+      { id: 2, name: 'Grado2' },
+      { id: 3, name: 'Ciclo Formativo de Grado Superior' },
     ];
 
     const titleStudies: any[] = [
-      { uid: 1, name: 'Estudio1' },
-      { uid: 2, name: 'Administracion de sistemas informaticos y redes' },
-      { uid: 3, name: 'Estudio3' },
+      { id: 1, name: 'Estudio1' },
+      { id: 2, name: 'Administracion de sistemas informaticos y redes' },
+      { id: 3, name: 'Estudio3' },
+    ];
+
     ];
 
     return {

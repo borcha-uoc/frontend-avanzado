@@ -25,7 +25,7 @@ const routes: Routes = [
     component: ProfileStudiesEditComponent
   },
   {
-    path: 'studies/:uid/edit',
+    path: 'studies/:id/edit',
     component: ProfileStudiesEditComponent
   },
   {
@@ -37,7 +37,7 @@ const routes: Routes = [
     component: ProfileLanguagesEditComponent
   },
   {
-    path: 'languages/:uid/edit',
+    path: 'languages/:id/edit',
     component: ProfileLanguagesEditComponent
   }
   ];

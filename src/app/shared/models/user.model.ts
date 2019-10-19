@@ -13,15 +13,15 @@ export interface UserAddress {
   municipe: Municipe;
 }
 export interface DocumentType {
-  uid: number;
+  id: number;
   name: string;
 }
 export interface Municipe {
-  uid: number;
+  id: number;
   name: string;
 }
 export interface Province {
-  uid: number;
+  id: number;
   name: string;
 }
 export interface User {

@@ -40,9 +40,9 @@ export class ProfileStudiesEditComponent {
 
     this.editing = this.router.url.endsWith('edit');
     if (this.editing) {
-      // buscar el uid y asignarlo a study
-      let uid = this.route.snapshot.params.uid;
-      let study = authenticationService.currentUser.studies.find(s => s.uid == uid);
+      // buscar el id y asignarlo a study
+      let id = this.route.snapshot.params.id;
+      let study = authenticationService.currentUser.studies.find(s => s.id == id);
       this.level = study.level;
       this.studiesForm = this.createVocationalForm(study);
     } else {
@@ -106,17 +106,17 @@ export class ProfileStudiesEditComponent {
     study.level = this.level;
 
     if (this.editing) {
-      study.uid = parseInt(this.route.snapshot.params.uid);
+      study.id = parseInt(this.route.snapshot.params.id);
 
       // Reemplazamos el elementos que estamos editando
       user.studies.forEach((element, index) => {
-        if(element.uid === study.uid) {
+        if(element.id === study.id) {
           user.studies[index] = study;
         }
       });
     } else {
-      // Generamos un uid distinto cada vez que guardemos
-      study.uid = new Date().getTime();
+      // Generamos un id distinto cada vez que guardemos
+      study.id = new Date().getTime();
       // Agregamo el elemento
       user.studies.push(study);
     }
@@ -134,7 +134,7 @@ export class ProfileStudiesEditComponent {
     return (control.dirty || control.touched) && control.invalid && control.errors[errorType];
   }
 
-  compareByUid(c1: any, c2:any): boolean {
-    return c1 && c2 ? c1.uid === c2.uid : c1 === c2; 
+  compareById(c1: any, c2:any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2; 
   }
 }

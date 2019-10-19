@@ -86,8 +86,8 @@ export class ProfilePersonalDataComponent {
     return (control.dirty || control.touched) && control.invalid && control.errors[errorType];
   }
 
-  compareByUid(c1: any, c2:any): boolean {
-    return c1 && c2 ? c1.uid === c2.uid : c1 === c2; 
+  compareById(c1: any, c2:any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2; 
   }
 }
 

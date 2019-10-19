@@ -26,9 +26,9 @@ export class StudiesService {
   }
   getLevelStudies() {
     return [
-      { uid: 1, name: 'Ciclo Formativo' },
-      { uid: 2, name: 'Título universitario' },
-      { uid: 3, name: 'Otros' }
+      { id: 1, name: 'Ciclo Formativo' },
+      { id: 2, name: 'Título universitario' },
+      { id: 3, name: 'Otros' }
     ];
   }
 }

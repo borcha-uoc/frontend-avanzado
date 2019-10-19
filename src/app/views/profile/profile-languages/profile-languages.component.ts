@@ -20,7 +20,7 @@ export class ProfileLanguagesComponent {
       return;
     }
     
-    this.user.languages = this.user.languages.filter(s => s.uid != language.uid);
+    this.user.languages = this.user.languages.filter(s => s.id != language.id);
     this.authenticationService.saveUser(this.user);
   }
 }

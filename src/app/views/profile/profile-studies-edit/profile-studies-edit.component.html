@@ -5,7 +5,7 @@
   <div class="row">
     <div class="column">
       <label for="level">Tipo de estudio</label>
-      <select id="level" name="level" [(ngModel)]="level" (change)="onChangeLevel($event)" [ngModelOptions]="{standalone: true}" [compareWith]="compareByUid">
+      <select id="level" name="level" [(ngModel)]="level" (change)="onChangeLevel($event)" [ngModelOptions]="{standalone: true}" [compareWith]="compareById">
         <option *ngFor="let studylevel of levels" [ngValue]="studylevel">{{studylevel.name}}</option>
       </select>
     </div>
@@ -52,7 +52,7 @@
     <div class="row">
     <div class="column">
       <label for="institution">Centro educativo</label>
-      <select formControlName="institution" id="institution" name="institution" [compareWith]="compareByUid">
+      <select formControlName="institution" id="institution" name="institution" [compareWith]="compareById">
         <option *ngFor="let institutionValue of institutions" [ngValue]="institutionValue">{{institutionValue.name}}</option>
       </select>
       <div *ngIf="error('institution', 'required')" class="error-message" >Campo obligatorio</div>
@@ -61,7 +61,7 @@
   <div class="row">
     <div class="column">
       <label class="category">Familia profesional</label>
-      <select formControlName="category" id="category" name="category" [compareWith]="compareByUid">
+      <select formControlName="category" id="category" name="category" [compareWith]="compareById">
         <option *ngFor="let categoryValue of categories" [ngValue]="categoryValue">{{categoryValue.name}}</option>
       </select>
       <div *ngIf="error('category', 'required')" class="error-message" >Campo obligatorio</div>
@@ -70,7 +70,7 @@
   <div class="row">
     <div class="column">
       <label for="grade">Grado</label>
-      <select formControlName="grade" id="grade" name="grade" [compareWith]="compareByUid">
+      <select formControlName="grade" id="grade" name="grade" [compareWith]="compareById">
         <option *ngFor="let gradeValue of grades" [ngValue]="gradeValue">{{gradeValue.name}}</option>
       </select>
       <div *ngIf="error('grade', 'required')" class="error-message" >Campo obligatorio</div>
@@ -79,7 +79,7 @@
   <div class="row">
     <div class="column">
       <label for="title">Ciclo</label>
-      <select formControlName="title" id="title" name="title" [compareWith]="compareByUid">
+      <select formControlName="title" id="title" name="title" [compareWith]="compareById">
         <option *ngFor="let titleValue of titleStudies" [ngValue]="titleValue">{{titleValue.name}}</option>
       </select>
       <div *ngIf="error('title', 'required')" class="error-message" >Campo obligatorio</div>

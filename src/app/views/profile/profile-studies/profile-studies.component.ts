@@ -20,7 +20,7 @@ export class ProfileStudiesComponent {
       return;
     }
 
-    this.user.studies = this.user.studies.filter(s => s.uid != study.uid);
+    this.user.studies = this.user.studies.filter(s => s.id != study.id);
     this.authenticationService.saveUser(this.user);
   }
 }
