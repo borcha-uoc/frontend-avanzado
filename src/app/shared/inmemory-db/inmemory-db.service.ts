@@ -300,6 +300,19 @@ export class FakeBackendService implements InMemoryDbService {
       { id: 3, name: 'Estudio3' },
     ];
 
+    const languageNames: any[] = [
+      { id: 1, name: 'Inglés' },
+      { id: 2, name: 'Francés' },
+      { id: 3, name: 'Alemán' },
+    ];
+
+    const languageLevels: any[] = [
+      { id: 1, name: 'A1' },
+      { id: 2, name: 'A2' },
+      { id: 3, name: 'B1' },
+      { id: 4, name: 'B2' },
+      { id: 5, name: 'C1' },
+      { id: 6, name: 'C2' },
     ];
 
     return {
@@ -312,6 +325,8 @@ export class FakeBackendService implements InMemoryDbService {
       categories,
       grades,
       titleStudies,
+      languageNames,
+      languageLevels,
     };
   }
 }
