@@ -97,6 +97,11 @@ export class ProfileLanguagesEditComponent {
     });
   }
 
+  error(field, errorType) {
+    let control = field ? this.languagesForm.get(field) : this.languagesForm;
+    return (control.dirty || control.touched) && control.invalid && control.errors[errorType];
+  }
+
   compareById(c1: any, c2:any): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2; 
   }

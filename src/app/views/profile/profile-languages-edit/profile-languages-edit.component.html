@@ -8,12 +8,14 @@
       <select formControlName="name" id="name" name="name" [compareWith]="compareById" (change)="nameChanged()">
         <option *ngFor="let nameValue of languageNames" [ngValue]="nameValue">{{nameValue.name}}</option>
       </select>
+      <div *ngIf="error('name', 'required')" class="error-message" >Campo obligatorio</div>
     </div>
   </div>
   <div class="row" *ngIf="showOther">
     <div class="column">
       <label for="other">Indique el idioma</label>
       <input formControlName="other" id="other" name="other" type="text">      
+      <div *ngIf="error('other', 'required')" class="error-message" >Campo obligatorio</div>
     </div>
   </div>
   <div class="row">
@@ -22,12 +24,15 @@
       <select formControlName="level" id="level" name="level" [compareWith]="compareById">
         <option *ngFor="let levelValue of languageLevels" [ngValue]="levelValue">{{levelValue.name}}</option>
       </select>
+      <div *ngIf="error('level', 'required')" class="error-message" >Campo obligatorio</div>
     </div>
   </div>
   <div class="row">
     <div class="column">
       <label for="date">Fecha del título</label>
       <input formControlName="date" id="date" name="date" type="text">
+      <div *ngIf="error('date', 'validDate')" class="error-message">El formato de fecha debe ser DD/MM/YYYY</div>
+      <div *ngIf="error('date', 'required')" class="error-message">Campo obligatorio</div>
     </div>
   </div>
   
