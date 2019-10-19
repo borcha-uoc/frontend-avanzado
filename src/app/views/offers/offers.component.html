@@ -1,3 +1,30 @@
-<p>
-  offers works!
-</p>
+<h1>Ofertas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Puesto</th>
+      <th>Empresa</th>
+      <th>Familia profesional</th>
+      <th>Fecha</th>
+      <th>Provincia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let offer of offers">
+      <td>{{offer.job.name}}</td>
+      <td>{{offer.company.name}}</td>
+      <td>{{offer.category.name}}</td>
+      <td>{{offer.date}}</td>
+      <td>{{offer.province.name}}</td>
+    </tr>
+    <tr *ngIf="offers.length == 0">
+      <td colspan="4">No hay ofertas</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="float-right">
+  <a [routerLink]="'/dashboard'" class="button button-outline">Volver</a>
+</div>
+
