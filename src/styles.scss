@@ -6,3 +6,14 @@
   line-height: 2.8rem;
   padding: 0 1.5rem;
 }
+
+.error-message {
+  color: red;
+  margin-top: -1rem;
+  padding-bottom: 1rem;
+  font-size: small;
+}
+
+input.ng-dirty.ng-invalid {
+  border-color: red !important;
+}
