@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service'
 import { Language, LanguageLevel, LanguageName } from 'src/app/shared/models/language.model';
 import { LanguagesService } from 'src/app/shared/services/languages.service'
 
@@ -17,7 +19,10 @@ export class ProfileLanguagesEditComponent {
   languagesForm: FormGroup;
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService,
     private languagesService: LanguagesService)
   {
     // Cargar opciones de los desplegables
@@ -25,6 +30,15 @@ export class ProfileLanguagesEditComponent {
     this.languagesService.getLanguageLevels().then(languageLevels => this.languageLevels = languageLevels);
 
     let language = new Language();
+    this.editing = this.router.url.endsWith('edit');
+    if (this.editing) {
+      // buscar por id
+      let id = parseInt(this.route.snapshot.params.id);
+      language = authenticationService.currentUser.languages.find(l => l.id == id);
+    } else {
+      language = new Language();
+    }
+
     this.languagesForm = this.createFormGroup(language);
   }
 
