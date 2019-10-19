@@ -1,1 +1,41 @@
-<p>profile-languages-edit works!</p>
+<h1 *ngIf="!editing">Nuevo idioma</h1>
+<h1 *ngIf="editing">Editar idioma</h1>
+
+<form [formGroup]="languagesForm" (ngSubmit)="save()">
+  <div class="row">
+    <div class="column">
+      <label for="name">Idioma</label>
+      <select id="name" name="name">
+        <option>opcion</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <label for="level">Nivel</label>
+      <select id="level" name="level" >
+        <option>opcion</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <label for="date">Fecha del título</label>
+      <input id="date" name="date" type="text">
+    </div>
+  </div>
+  
+  <hr>
+
+  <div class="float-right">
+    <a [routerLink]="'/profile/languages'" class="button button-outline">Volver</a>
+  </div>
+  <button *ngIf="!editing">Crear</button>
+  <button *ngIf="editing">Guardar</button>
+</form>
+
+
+
+
+
+
