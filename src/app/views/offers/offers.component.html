@@ -11,6 +11,14 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td colspan="5" *ngIf="loading">
+        <div class="ld-ext-left running">
+          Cargando ofertas ...
+          <div class="ld ld-ball ld-flip"></div>
+        </div>
+      </td>
+    </tr>
     <tr *ngFor="let offer of offers">
       <td>{{offer.job.name}}</td>
       <td>{{offer.company.name}}</td>
@@ -18,8 +26,8 @@
       <td>{{offer.date}}</td>
       <td>{{offer.province.name}}</td>
     </tr>
-    <tr *ngIf="offers.length == 0">
-      <td colspan="4">No hay ofertas</td>
+    <tr *ngIf="offers.length == 0 && !loading">
+      <td colspan="5">No hay ofertas</td>
     </tr>
   </tbody>
 </table>

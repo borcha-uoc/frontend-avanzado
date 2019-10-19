@@ -8,12 +8,16 @@ import { OffersService } from 'src/app/shared/services/offers.service'
   styleUrls: ['./offers.component.scss']
 })
 export class OffersComponent {
+  loading: boolean;
   offers: Offer[] = [];
 
   constructor(
     private offersService: OffersService)
   {
-    // Cargar opciones de los desplegables
-    this.offersService.getOffers().then(offers => this.offers = offers);
+    this.loading = true;
+    this.offersService.getOffers().then(offers => {
+      this.offers = offers;
+      this.loading = false;
+    });
   }
 }
