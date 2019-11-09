@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { rootRouterConfig } from './app-routing';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -18,7 +20,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     HttpClientInMemoryWebApiModule.forRoot(FakeBackendService, {
       dataEncapsulation: false
     }),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   declarations: [AppComponent],
   providers: [],
