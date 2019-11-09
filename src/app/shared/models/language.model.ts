@@ -1,14 +1,14 @@
-export class Language {
-  id: number;
+export interface Language {
+  uid: number;
   level: LanguageLevel;
   name: LanguageName;
   date: string;
 }
-export class LanguageName {
-  id: number;
+export interface LanguageName {
+  uid: number;
   name: string;
 }
-export class LanguageLevel {
-  id: number;
+export interface LanguageLevel {
+  uid: number;
   name: string;
 }

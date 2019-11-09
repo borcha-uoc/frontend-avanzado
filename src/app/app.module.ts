@@ -1,27 +1,25 @@
-import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './shared/core.module';
+import { FakeBackendService } from './shared/inmemory-db/fake-backend.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
 import { rootRouterConfig } from './app-routing';
-import { InMemoryWebApiModule } from "angular-in-memory-web-api";
-import { FakeBackendService } from "./shared/inmemory-db/inmemory-db.service";
-import { AuthenticationService } from "./shared/services/authentication.service";
-import { DictionaryService } from "./shared/services/dictionary.service";
-import { StudiesService } from "./shared/services/studies.service";
-import { LanguagesService } from "./shared/services/languages.service";
-import { OffersService } from "./shared/services/offers.service";
-
 
 @NgModule({
   imports: [
     SharedModule,
     CoreModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
-    InMemoryWebApiModule.forRoot(FakeBackendService, { delay: 2000 })
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(FakeBackendService, {
+      dataEncapsulation: false
+    })
   ],
   declarations: [AppComponent],
-  providers: [AuthenticationService, DictionaryService, StudiesService, LanguagesService, OffersService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

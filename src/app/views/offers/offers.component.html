@@ -1,38 +1,6 @@
-<h1>Ofertas</h1>
+<h2>
+  Offers
+</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Puesto</th>
-      <th>Empresa</th>
-      <th>Familia profesional</th>
-      <th>Fecha</th>
-      <th>Provincia</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td colspan="5" *ngIf="loading">
-        <div class="ld-ext-left running">
-          Cargando ofertas ...
-          <div class="ld ld-ball ld-flip"></div>
-        </div>
-      </td>
-    </tr>
-    <tr *ngFor="let offer of offers">
-      <td>{{offer.job.name}}</td>
-      <td>{{offer.company.name}}</td>
-      <td>{{offer.category.name}}</td>
-      <td>{{offer.date}}</td>
-      <td>{{offer.province.name}}</td>
-    </tr>
-    <tr *ngIf="offers.length == 0 && !loading">
-      <td colspan="5">No hay ofertas</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="float-right">
-  <a [routerLink]="'/dashboard'" class="button button-outline">Volver</a>
-</div>
-
+<app-offers-list *ngIf="isOffersList"></app-offers-list>
+<app-offers-profile *ngIf="!isOffersList"></app-offers-profile>

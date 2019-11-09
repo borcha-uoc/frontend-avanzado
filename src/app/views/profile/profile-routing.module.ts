@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile.component';
-import { ProfilePersonalDataComponent } from './profile-personal-data/profile-personal-data.component';
-import { ProfileStudiesComponent } from './profile-studies/profile-studies.component';
-import { ProfileStudiesEditComponent } from './profile-studies-edit/profile-studies-edit.component';
-import { ProfileLanguagesComponent } from './profile-languages/profile-languages.component';
-import { ProfileLanguagesEditComponent } from './profile-languages-edit/profile-languages-edit.component';
+import { ProfileStudyComponent } from './profile-student/study/profile-study.component';
+import { ProfileLanguageComponent } from './profile-student/language/profile-language.component';
+import { ProfileAccountComponent } from './profile-student/account/profile-account.component';
 
 const routes: Routes = [
   {
@@ -13,37 +11,29 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'personal-data',
-    component: ProfilePersonalDataComponent
+    path: 'profile-student/account',
+    component: ProfileAccountComponent
   },
   {
-    path: 'studies',
-    component: ProfileStudiesComponent
+    path: 'profile-student/study',
+    component: ProfileStudyComponent
   },
   {
-    path: 'studies/new',
-    component: ProfileStudiesEditComponent
+    path: 'profile-student/study/:uid',
+    component: ProfileStudyComponent
   },
   {
-    path: 'studies/:id/edit',
-    component: ProfileStudiesEditComponent
+    path: 'profile-student/language',
+    component: ProfileLanguageComponent
   },
   {
-    path: 'languages',
-    component: ProfileLanguagesComponent
-  },
-  {
-    path: 'languages/new',
-    component: ProfileLanguagesEditComponent
-  },
-  {
-    path: 'languages/:id/edit',
-    component: ProfileLanguagesEditComponent
+    path: 'profile-student/language/:uid',
+    component: ProfileLanguageComponent
   }
-  ];
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProfileRoutingModule { }
+export class ProfileRoutingModule {}

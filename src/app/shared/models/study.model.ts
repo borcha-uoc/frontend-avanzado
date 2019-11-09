@@ -1,5 +1,5 @@
 export class Study {
-  id: number;
+  uid: number;
   level: LevelStudy;
   title: TitleStudy;
   certificate: boolean; //Sera un fichero
@@ -21,22 +21,22 @@ export class VocationalStudy extends Study {
 }
 
 export class Institution {
-  id: number;
+  uid: number;
   name: string;
 }
 export class Category {
-  id: number;
+  uid: number;
   name: string;
 }
 export class Grade {
-  id: number;
+  uid: number;
   name: string;
 }
 export class TitleStudy {
-  id: number;
+  uid: number;
   name: string;
 }
 export class LevelStudy {
-  id: number;
+  uid: number;
   name: string;
 }

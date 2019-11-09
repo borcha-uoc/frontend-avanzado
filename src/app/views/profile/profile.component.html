@@ -1,102 +1,11 @@
+<h2>
+  Profile
+</h2>
+<!-- <div *ngIf="userRol === 'student'"> -->
+<app-profile-student> </app-profile-student>
+<!-- </div> -->
 
-<h1>
-  <img [src]="user.avatar_hash">
-  {{user.name}} {{user.surname}}
-</h1>
-
-<div class="float-right"><a [routerLink]="'/profile/personal-data'" class="button button-small button-outline">Editar</a></div>
-<h2>Datos personales</h2>
-
-
-<div class="row">
-  <div class="column">
-    <label>Fecha de nacimiento</label>
-    <p>{{user.birthdate}}</p>
-    <label>{{user.documentType.name}}</label>
-    <p>{{user.documentNumber}}</p>
-    <label>Permiso de conducir</label>
-    <p>{{user.license}}</p>
-  </div>
-  <div class="column">
-    <label>Correo electrónico</label>
-    <p><a href="mailto:{{user.email}}">{{user.email}}</a></p>
-    <label>Teléfono</label>
-    <p>{{user.phone}}<span *ngIf="user.phone2">, {{user.phone2}}</span></p>
-    <label>Dirección</label>
-    <p>
-      {{user.address.street}}
-      <br>
-      {{user.address.municipe?.name}}, {{user.address.province?.name}}
-    </p>
-  </div>
-</div>
-
-<div class="row">
-  <div class="column">
-    <h3>Sobre mí</h3>
-    <blockquote>
-      {{user.aboutMe}}
-    </blockquote>
-  </div>
-  <div class="column">
-    <h3>Otras competencias</h3>
-    <blockquote>
-    {{user.otherCompetences}}
-    </blockquote>
-  </div>  
-</div>
-
-<div class="float-right"><a [routerLink]="'/profile/studies'" class="button button-small button-outline">Editar</a></div>
-<h2>Formación Académica</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nivel</th>
-      <th>Título</th>
-      <th>Centro</th>
-      <th>Fecha</th>
-      <th>Certificado</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let study of user.studies">
-      <td>{{study.level.name}}</td>
-      <td>{{study.title.name}}</td>
-      <td>{{study.institution.name}}</td>
-      <td>{{study.date}}</td>
-      <td><a *ngIf="study.certificate" href="#" onclick="alert('descargando pdf ...'); return false">Descargar</a></td>
-    </tr>
-    <tr *ngIf="user.studies.length == 0">
-      <td colspan="5">No hay información sobre estudios.</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="float-right"><a [routerLink]="'/profile/languages'" class="button button-small button-outline">Editar</a></div>
-<h2>Idiomas</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nivel</th>
-      <th>Idioma</th>
-      <th>Fecha</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr *ngFor="let language of user.languages">
-      <td>{{language.level.name}}</td>
-      <td>{{language.name.name}}</td>
-      <td>{{language.date}}</td>
-    </tr>
-    <tr *ngIf="user.languages.length == 0">
-      <td colspan="3">No hay información sobre idiomas.</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="float-right">
-  <a [routerLink]="'/dashboard'" class="button button-outline">Volver</a>
-</div>
+<!-- <div *ngIf="userRol === 'company'">
+	<app-profile-company> </app-profile-company>
+	
+</div> -->
