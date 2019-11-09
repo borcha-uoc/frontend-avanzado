@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { rootRouterConfig } from './app-routing';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { rootRouterConfig } from './app-routing';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(FakeBackendService, {
       dataEncapsulation: false
-    })
+    }),
+    StoreRouterConnectingModule.forRoot()
   ],
   declarations: [AppComponent],
   providers: [],
