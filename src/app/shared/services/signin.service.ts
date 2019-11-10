@@ -17,4 +17,12 @@ export class SigninService {
       (user: any) => user.email === email && user.password === password
     );
   }
+
+  async recoverPassword(email): Promise<any> {
+    const users = await this.getUsers();
+    // Mock response from backend:
+    return users.some(
+      (user: any) => user.email === email
+    );
+  }
 }
