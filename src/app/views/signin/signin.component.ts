@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SigninService } from './signin.service';
 import { ProfileService } from 'src/app/shared/services/profile.service';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { IStore } from '@app/shared/state/store.interface';
+import { AuthActions } from '@app/shared/state/auth/actions';
+import { getErrorLogin } from '@app/shared/state/auth/selectors';
 
 @Component({
   selector: 'app-signin',
@@ -12,13 +16,15 @@ import { ProfileService } from 'src/app/shared/services/profile.service';
 export class SigninComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  errorLogin = false;
+  errorLogin: Observable<boolean>;
+
   constructor(
-    private signinService: SigninService,
-    private profileService: ProfileService,
+    private store: Store<IStore>,
     private formBuilder: FormBuilder,
     private router: Router
-  ) {}
+  ) {
+    this.errorLogin = store.select(getErrorLogin);
+  }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -29,14 +35,6 @@ export class SigninComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
-    this.signinService.login({ ...this.loginForm.value }).then(user => {
-      if (!user) {
-        this.errorLogin = true;
-        return;
-      }
-      this.profileService.user = user;
-      this.router.navigate(['admin/dashboard']);
-    });
+    this.store.dispatch(AuthActions.login(this.loginForm.value));
   }
 }

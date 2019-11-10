@@ -6,7 +6,7 @@
       <h2>Login</h2>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div *ngIf="errorLogin" class="alert alert-danger">
+        <div *ngIf="errorLogin | async" class="alert alert-danger">
           <button type="button" class="close" data-dismiss="alert">
             &times;
           </button>
