@@ -18,6 +18,7 @@ import { UserEffects } from './states/user/effects/user.effects';
 import { AppEffects } from './states/app/effects'; */
 /* import { UsersEffects } from './states/users/effects'; */
 /* import { UsersService } from '../views/users/shared/users.service'; */
+import { SigninService } from './services/signin.service';
 import { ProfileService } from './services/profile.service';
 
 /* import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -31,6 +32,7 @@ import { OffersService } from './services/offers.service';
 } */
 
 export const CORE_SERVICES: Provider[] = [
+  SigninService,
   ProfileService,
   OffersService,
   NotificationsService
