@@ -8,3 +8,9 @@ export const getErrorLogin = createSelector(
   selectAuthState,
   fromAuth.getErrorLogin,
 );
+
+export const getRecovered = createSelector(
+  selectAuthState,
+  fromAuth.getRecovered,
+);
+

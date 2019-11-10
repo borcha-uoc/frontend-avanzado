@@ -14,3 +14,16 @@ export const loginSuccess = createAction(
 export const loginFailure = createAction(
   '[Auth] Login Failure'
 );
+
+export const recoverPassword = createAction(
+  '[Auth] Recover Password',
+  props<{ email: string }>()
+);
+
+export const recoverPasswordSuccess = createAction(
+  '[Auth] Recover Password Success',
+);
+
+export const recoverPasswordFailure = createAction(
+  '[Auth] Recover Password Failure',
+);

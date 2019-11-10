@@ -47,4 +47,23 @@ export class AuthEffects {
       ),
     { dispatch: false }
   );
+
+  recoverPassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.recoverPassword),
+      mergeMap(({email}) => 
+        from(this.signinService.recoverPassword(email)).pipe(
+          map(found => {
+            console.log('founc', found);
+            if (found) {
+              return AuthActions.recoverPasswordSuccess();
+            } else {
+              return AuthActions.recoverPasswordFailure();
+            }
+          }),
+          catchError(() => of(AuthActions.recoverPasswordFailure()))
+        )
+      )
+    )
+  );
 }

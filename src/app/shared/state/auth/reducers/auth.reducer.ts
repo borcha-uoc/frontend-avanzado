@@ -20,5 +20,20 @@ export const reducer = createReducer(
   on(AuthActions.loginFailure, state => ({
     ...state,
     error: true,
-  }))
+  })),
+
+  on(AuthActions.recoverPassword, state => ({
+    ...state,
+    recovered: null,
+  })),
+
+  on(AuthActions.recoverPasswordSuccess, state => ({
+    ...state,
+    recovered: true,
+  })),
+
+  on(AuthActions.recoverPasswordFailure, state => ({
+    ...state,
+    recovered: false,
+  })),
 );
