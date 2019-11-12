@@ -3,10 +3,15 @@ import { pipe } from 'rxjs';
 import { UserState } from '../user.interface';
 import * as fromProfile from './profile.reducer';
 import * as fromStudies from './studies.reducer';
+import * as fromLanguages from './languages.reducer';
 
 export function reducers(state: UserState | undefined, action: Action) {
   return combineReducers({
-    profile: reduceReducers(fromProfile.reducer, fromStudies.userReducer)
+    profile: reduceReducers(
+      fromProfile.reducer,
+      fromStudies.userReducer,
+      fromLanguages.userReducer,
+    )
   })(state, action);
 }
 
