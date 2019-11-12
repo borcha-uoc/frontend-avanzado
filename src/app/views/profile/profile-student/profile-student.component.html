@@ -1,4 +1,4 @@
-<div id="contenido">
+<div id="contenido" *ngIf="user | async as user; else loading">
   <div class="float-left" id="foto-perfil">
     <div>
       <img
@@ -141,3 +141,6 @@
     >
   </section>
 </div>
+<ng-template #loading>
+    <div>Cargando ...</div>
+</ng-template> 
