@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProfileService } from 'src/app/shared/services/profile.service';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IStore } from '@app/shared/state/store.interface';
