@@ -77,7 +77,7 @@
         <th>Acciones</th>
       </thead>
       <tbody>
-        <tr *ngFor="let study of user.studies; let i = index">
+        <tr *ngFor="let study of studies | async; let i = index">
           <td>{{ study.level.name }}</td>
           <td>{{ study.grade?.name }}</td>
 
