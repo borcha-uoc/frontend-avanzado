@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '@app/shared/models/user.model';
 import { VocationalStudy, CollegeStudy } from '@app/shared/models/study.model';
+import { Language } from '@app/shared/models/language.model';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IStore } from '@app/shared/state/store.interface';
-import { ProfileActions, StudiesActions } from '@app/shared/state/user/actions';
-import { getUserProfile, getStudies } from '@app/shared/state/user/selectors';
+import { ProfileActions, StudiesActions, LanguagesActions } from '@app/shared/state/user/actions';
+import { getUserProfile, getStudies, getLanguages } from '@app/shared/state/user/selectors';
 
 
 
@@ -18,10 +19,12 @@ import { getUserProfile, getStudies } from '@app/shared/state/user/selectors';
 export class ProfileStudentComponent implements OnInit {
   user: Observable<User>;
   studies: Observable<(VocationalStudy | CollegeStudy)[]>;
+  languages: Observable<Language[]>;
 
   constructor(private store: Store<IStore>) {
     this.user = store.select(getUserProfile);
     this.studies = store.select(getStudies);
+    this.languages = store.select(getLanguages);
   }
 
   ngOnInit() {
@@ -33,15 +36,6 @@ export class ProfileStudentComponent implements OnInit {
   }
 
   deleteLanguage(languageID: any) {
-    // this.store.dispatch(LanguagesAction.delete({id:languageID});
-
-    // const languages = this.user.languages;
-    // const index = languages.findIndex(language => language.uid === languageID);
-    // if (index === -1) {
-    //   alert('Error: Language not found');
-    //   return;
-    // }
-    // languages.splice(index, 1);
-    // this.profileService.updateProfile(this.user);
+    this.store.dispatch(LanguagesActions.deleteLanguage({id:languageID}));
   }
 }

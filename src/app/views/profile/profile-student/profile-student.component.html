@@ -116,7 +116,7 @@
         <th>Acciones</th>
       </thead>
       <tbody>
-        <tr *ngFor="let language of user.languages">
+        <tr *ngFor="let language of languages | async">
           <td>{{ language.level.name }}</td>
           <td>{{ language.name.name }}</td>
           <td>{{ language.date }}</td>
