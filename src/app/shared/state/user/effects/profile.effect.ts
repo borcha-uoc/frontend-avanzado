@@ -24,4 +24,16 @@ export class ProfileEffects {
       mergeMap(() => of(ProfileActions.loadUserSuccess({user:this.profileService.user})))
     )
   );
+
+  saveUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProfileActions.saveUser),
+      tap(({user}) => {
+        this.profileService.user = user;
+        this.profileService.updateProfile(user);
+      }),
+      mergeMap(({user}) => of(ProfileActions.saveUserSuccess({user:this.profileService.user}))),
+      tap(() => this.router.navigate(['admin/profile'])),
+    )
+  );
 }

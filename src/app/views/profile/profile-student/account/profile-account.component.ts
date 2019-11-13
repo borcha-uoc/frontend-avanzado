@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProfileService } from '../../../../shared/services/profile.service';
 import { MockData } from 'src/app/shared/mock-data';
 import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
 import {
@@ -11,6 +10,13 @@ import {
   Province
 } from 'src/app/shared/models/user.model';
 import { documentNumberValidator } from 'src/app/shared/directives/document-number-validator.directive';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { IStore } from '@app/shared/state/store.interface';
+import { ProfileActions } from '@app/shared/state/user/actions';
+import { getUserProfile } from '@app/shared/state/user/selectors';
+
+
 
 @Component({
   selector: 'app-profile-account',
@@ -24,8 +30,11 @@ export class ProfileAccountComponent implements OnInit {
   municipes: Municipe[];
   provinces: Province[];
 
-  constructor(private router: Router, private profileService: ProfileService) {
-    this.user = this.profileService.user;
+  constructor(private router: Router, private store: Store<IStore>) {
+    store.select(getUserProfile).subscribe(user => {
+      this.user = user;
+      this.loadFormInstance();
+    });
   }
   ngOnInit() {
     this.loadSelectProperties();
@@ -89,10 +98,8 @@ export class ProfileAccountComponent implements OnInit {
   }
 
   public save() {
-    const user = { ...this.profileService.user, ...this.rForm.value };
-    this.profileService.user = user;
-    this.profileService.updateProfile(user);
-    this.router.navigate(['/admin/profile']);
+    const user = { ...this.user, ...this.rForm.value };
+    this.store.dispatch(ProfileActions.saveUser({user}))
   }
   compareByUID(option1, option2) {
     return option1.uid === (option2 && option2.uid);
