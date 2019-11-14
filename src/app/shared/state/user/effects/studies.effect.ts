@@ -23,8 +23,13 @@ export class StudiesEffects {
   deleteStudy$ = createEffect(() =>
     this.actions$.pipe(
       ofType(StudiesActions.deleteStudy),
-      // Aquí se debería llamar al método que permita eliminar el studio indicado
-      // tap(({id}) => this.profileService.updateProfile(this.user)),
+      tap(({id}) => {
+        const user = this.profileService.user;
+        const studies = user.studies;
+        const index = studies.findIndex(study => study.uid === id);
+        studies.splice(index, 1);
+        this.profileService.updateProfile(user);
+      }),
       mergeMap(({id}) => of(StudiesActions.deleteStudySuccess({id})))
     )
   );

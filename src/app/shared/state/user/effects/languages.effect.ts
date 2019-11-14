@@ -20,8 +20,13 @@ export class LanguagesEffects {
   deleteLanguage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(LanguagesActions.deleteLanguage),
-      // Aquí se debería llamar al método que permita eliminar el idioma indicado
-      // tap(({id}) => this.profileService.updateProfile(this.user)),
+      tap(({id}) => {
+        const user = this.profileService.user;
+        const languages = user.languages;
+        const index = languages.findIndex(language => language.uid === id);
+        languages.splice(index, 1);
+        this.profileService.updateProfile(user);
+      }),
       mergeMap(({id}) => of(LanguagesActions.deleteLanguageSuccess({id})))
     )
   );
