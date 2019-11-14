@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProfileService } from '../../../../shared/services/profile.service';
-import {
-  Study,
-  VocationalStudy,
-  CollegeStudy
-} from 'src/app/shared/models/study.model';
+import { Study, VocationalStudy, CollegeStudy } from 'src/app/shared/models/study.model';
 import { MockData } from 'src/app/shared/mock-data';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { IStore } from '@app/shared/state/store.interface';
+import { ProfileActions, StudiesActions, LanguagesActions } from '@app/shared/state/user/actions';
+import { getSelectedStudy } from '@app/shared/state/user/selectors';
+
+
 
 @Component({
   selector: 'app-profile-study',
@@ -17,22 +19,28 @@ import { MockData } from 'src/app/shared/mock-data';
 export class ProfileStudyComponent {
   studiesForm: FormGroup;
   options = MockData.TYPE_STUDIES;
-  study: Study = {} as (VocationalStudy | CollegeStudy);
+  study: Observable<Study>;
+  isNew: boolean = false;
 
   constructor(
+    private store: Store<IStore>,
     private route: ActivatedRoute,
-    private router: Router,
-    private profileService: ProfileService
+    private router: Router
   ) {
-    this.route.params.subscribe(params => {
-      const user = this.profileService.user;
-      const uid = +params.uid;
-      this.study = (user.studies.find(study => study.uid === uid) || {}) as
-        | VocationalStudy
-        | CollegeStudy;
+    this.study = this.store.select(getSelectedStudy);
+    this.study.subscribe(study => {
+      if (!study) return;
+      this.studiesForm = new FormGroup({
+        option: new FormControl(study.level, [Validators.required])
+      });
     });
-    this.studiesForm = new FormGroup({
-      option: new FormControl(this.study.level, [Validators.required])
+    this.route.params.subscribe(params => {
+      this.isNew = !params.uid;
+      if (this.isNew) {
+        this.store.dispatch(StudiesActions.newStudy());
+      } else {
+        this.store.dispatch(StudiesActions.editStudy({uid:+params.uid}));
+      }
     });
   }
 
@@ -40,30 +48,27 @@ export class ProfileStudyComponent {
     return option1.uid === (option2 && option2.uid);
   }
   private update(study: VocationalStudy | CollegeStudy) {
-    const user = this.profileService.user;
-    const studies = user.studies;
-    const foundIndex = studies.findIndex(_study => _study.uid === study.uid);
-    studies[foundIndex] = study;
-    this.profileService.updateProfile(user);
-    this.router.navigate(['/admin/profile']);
+    // const user = this.profileService.user;
+    // const studies = user.studies;
+    // const foundIndex = studies.findIndex(_study => _study.uid === study.uid);
+    // studies[foundIndex] = study;
+    // this.profileService.updateProfile(user);
+    // this.router.navigate(['/admin/profile']);
   }
   private save(study: VocationalStudy | CollegeStudy) {
-    const user = this.profileService.user;
-    const _study = MockData.fakeIncreaseID<VocationalStudy | CollegeStudy>(
-      user.studies,
-      study
-    );
-    user.studies = [...user.studies, _study];
-    this.profileService.updateProfile(user);
-    this.router.navigate(['/admin/profile']);
+    // const user = this.profileService.user;
+    // const _study = MockData.fakeIncreaseID<VocationalStudy | CollegeStudy>(
+    //   user.studies,
+    //   study
+    // );
+    // user.studies = [...user.studies, _study];
+    // this.profileService.updateProfile(user);
+    // this.router.navigate(['/admin/profile']);
   }
 
   saveOrUpdate(study: VocationalStudy | CollegeStudy) {
     study.level = this.studiesForm.get('option').value;
-    this.isNew() ? this.save(study) : this.update(study);
-  }
-  public isNew(): boolean {
-    return !!!this.study.uid;
+    this.isNew ? this.save(study) : this.update(study);
   }
   public isSelectVocational(): boolean {
     const value = this.studiesForm.get('option').value;
