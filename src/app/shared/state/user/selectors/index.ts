@@ -1,5 +1,5 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { UserState } from '../user.interface';
+import { UserState, StudiesState } from '../user.interface';
 import * as fromProfile from './profile.selector';
 import * as fromStudies from './studies.selector';
 import * as fromLanguages from './languages.selector';
@@ -20,3 +20,10 @@ export const getLanguages = createSelector(
   selectUserState,
   fromLanguages.getLanguages,
 );
+
+export const getSelectedStudy = createSelector(
+  selectUserState,
+  fromStudies.getSelectedStudy,
+);
+
+

@@ -26,4 +26,12 @@ export class StudiesEffects {
       mergeMap(({id}) => of(StudiesActions.deleteStudySuccess({id})))
     )
   );
+
+  editStudy$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(StudiesActions.editStudy),
+      mergeMap(({uid}) =>
+        of(StudiesActions.editStudyLoaded({study:this.profileService.user.studies.find(study => study.uid === uid)})))
+    )
+  );
 }

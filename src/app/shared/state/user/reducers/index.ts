@@ -1,17 +1,18 @@
 import { Action, combineReducers } from '@ngrx/store';
 import { pipe } from 'rxjs';
-import { UserState } from '../user.interface';
+import { UserState, initialState } from '../user.interface';
 import * as fromProfile from './profile.reducer';
 import * as fromStudies from './studies.reducer';
 import * as fromLanguages from './languages.reducer';
 
-export function reducers(state: UserState | undefined, action: Action) {
+export function reducers(state: UserState = initialState, action: Action) {
   return combineReducers({
     profile: reduceReducers(
       fromProfile.reducer,
       fromStudies.userReducer,
       fromLanguages.userReducer,
-    )
+    ),
+    studies: fromStudies.reducer,
   })(state, action);
 }
 
