@@ -54,7 +54,6 @@ export class AuthEffects {
       mergeMap(({email}) => 
         from(this.signinService.recoverPassword(email)).pipe(
           map(found => {
-            console.log('founc', found);
             if (found) {
               return AuthActions.recoverPasswordSuccess();
             } else {

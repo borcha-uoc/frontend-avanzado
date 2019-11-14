@@ -32,13 +32,13 @@ export class ProfileAccountComponent implements OnInit {
 
   constructor(private router: Router, private store: Store<IStore>) {
     store.select(getUserProfile).subscribe(user => {
+      if (!user) return;
       this.user = user;
       this.loadFormInstance();
     });
   }
   ngOnInit() {
     this.loadSelectProperties();
-    this.loadFormInstance();
   }
   public loadSelectProperties(): void {
     this.documentsType = MockData.DOCUMENTS_TYPE;
