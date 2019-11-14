@@ -48,22 +48,10 @@ export class ProfileStudyComponent {
     return option1.uid === (option2 && option2.uid);
   }
   private update(study: VocationalStudy | CollegeStudy) {
-    // const user = this.profileService.user;
-    // const studies = user.studies;
-    // const foundIndex = studies.findIndex(_study => _study.uid === study.uid);
-    // studies[foundIndex] = study;
-    // this.profileService.updateProfile(user);
-    // this.router.navigate(['/admin/profile']);
+    this.store.dispatch(StudiesActions.updateStudy({study}));
   }
   private save(study: VocationalStudy | CollegeStudy) {
-    // const user = this.profileService.user;
-    // const _study = MockData.fakeIncreaseID<VocationalStudy | CollegeStudy>(
-    //   user.studies,
-    //   study
-    // );
-    // user.studies = [...user.studies, _study];
-    // this.profileService.updateProfile(user);
-    // this.router.navigate(['/admin/profile']);
+    this.store.dispatch(StudiesActions.saveStudy({study}));
   }
 
   saveOrUpdate(study: VocationalStudy | CollegeStudy) {

@@ -28,4 +28,14 @@ export const reducer = createReducer(
     ...state,
     selected: study,
   })),
+
+  on(StudiesActions.updateStudySuccess, (state: StudiesState) => ({
+    ...state,
+    selected: null,
+  })),
+
+  on(StudiesActions.saveStudySuccess, (state: StudiesState) => ({
+    ...state,
+    selected: null,
+  })),
 );
