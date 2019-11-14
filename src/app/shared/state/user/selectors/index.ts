@@ -26,4 +26,10 @@ export const getSelectedStudy = createSelector(
   fromStudies.getSelectedStudy,
 );
 
+export const getSelectedLanguage = createSelector(
+  selectUserState,
+  fromLanguages.getSelectedLanguage,
+);
+
+
 

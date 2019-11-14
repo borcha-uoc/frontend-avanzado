@@ -13,6 +13,7 @@ export function reducers(state: UserState = initialState, action: Action) {
       fromLanguages.userReducer,
     ),
     studies: fromStudies.reducer,
+    languages: fromLanguages.reducer,
   })(state, action);
 }
 

@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProfileService } from '../../../../shared/services/profile.service';
 import { MockData } from 'src/app/shared/mock-data';
-import {
-  Language,
-  LanguageLevel,
-  LanguageName
-} from 'src/app/shared/models/language.model';
+import {Language, LanguageLevel, LanguageName } from 'src/app/shared/models/language.model';
 import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { IStore } from '@app/shared/state/store.interface';
+import { LanguagesActions } from '@app/shared/state/user/actions';
+import { getSelectedLanguage } from '@app/shared/state/user/selectors';
+
 
 @Component({
   selector: 'app-profile-language',
@@ -17,25 +18,32 @@ import { dateValidator } from 'src/app/shared/directives/date-validator.directiv
 })
 export class ProfileLanguageComponent implements OnInit {
   rForm: FormGroup;
-  language: Language = {} as Language;
+  language: Language;
   languageLevels: LanguageLevel[];
   languageNames: LanguageName[];
+  isNew: boolean = false;
 
   constructor(
+    private store: Store<IStore>,
     private route: ActivatedRoute,
     private router: Router,
-    private profileService: ProfileService
   ) {
+    this.store.select(getSelectedLanguage).subscribe(language => {
+      if (!language) return;
+      this.language = language;
+      this.loadFormInstance();
+    });
     this.route.params.subscribe(params => {
-      const user = this.profileService.user;
-      const uid = +params.uid;
-      this.language = (user.languages.find(language => language.uid === uid) ||
-        {}) as Language;
+      this.isNew = !params.uid;
+      if (this.isNew) {
+        this.store.dispatch(LanguagesActions.newLanguage());
+      } else {
+        this.store.dispatch(LanguagesActions.editLanguage({uid:+params.uid}));
+      }
     });
   }
   ngOnInit() {
     this.loadSelectProperties();
-    this.loadFormInstance();
   }
   public loadSelectProperties(): void {
     this.languageLevels = MockData.LANGUAGES_LEVEL;
@@ -63,30 +71,12 @@ export class ProfileLanguageComponent implements OnInit {
     return option1.uid === (option2 && option2.uid);
   }
   private update(language: Language) {
-    const user = this.profileService.user;
-    const languages = user.languages;
-    const foundIndex = languages.findIndex(
-      _language => _language.uid === language.uid
-    );
-    languages[foundIndex] = language;
-    this.profileService.updateProfile(user);
-    this.router.navigate(['/admin/profile']);
+    this.store.dispatch(LanguagesActions.updateLanguage({language}));
   }
   private save(language: Language) {
-    const user = this.profileService.user;
-    const _language = MockData.fakeIncreaseID<Language>(
-      user.languages,
-      language
-    );
-    user.languages = [...user.languages, _language];
-    this.profileService.updateProfile(user);
-    this.router.navigate(['/admin/profile']);
+    this.store.dispatch(LanguagesActions.saveLanguage({language}));
   }
-
   saveOrUpdate(language: Language) {
-    this.isNew() ? this.save(language) : this.update(language);
-  }
-  public isNew(): boolean {
-    return !!!this.language.uid;
+    this.isNew ? this.save(language) : this.update(language);
   }
 }
