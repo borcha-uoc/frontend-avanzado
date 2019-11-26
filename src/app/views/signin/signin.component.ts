@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { IStore } from '@app/shared/state/store.interface';
-import { AuthActions } from '@app/shared/state/auth/actions';
-import { getErrorLogin } from '@app/shared/state/auth/selectors';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppStore } from 'src/app/shared/states/store.interface';
+import * as AuthActions from 'src/app/shared/states/auth/actions/auth.actions';
 
 @Component({
   selector: 'app-signin',
@@ -15,25 +12,19 @@ import { getErrorLogin } from '@app/shared/state/auth/selectors';
 export class SigninComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  errorLogin: Observable<boolean>;
-
-  constructor(
-    private store: Store<IStore>,
-    private formBuilder: FormBuilder,
-    private router: Router
-  ) {
-    this.errorLogin = store.select(getErrorLogin);
-  }
+  errorLogin = false;
+  constructor(private store$: Store<AppStore>) {}
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', Validators.required]
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('', Validators.required),
+      rememberMe: new FormControl(false),
     });
   }
 
   onSubmit() {
     this.submitted = true;
-    this.store.dispatch(AuthActions.login(this.loginForm.value));
+    this.store$.dispatch(new AuthActions.Identification({...this.loginForm.value}));
   }
 }

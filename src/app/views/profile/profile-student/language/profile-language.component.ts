@@ -1,60 +1,61 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
 import { MockData } from 'src/app/shared/mock-data';
-import {Language, LanguageLevel, LanguageName } from 'src/app/shared/models/language.model';
+import {
+  Language,
+  LanguageLevel,
+  LanguageName
+} from 'src/app/shared/models/language.model';
 import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { IStore } from '@app/shared/state/store.interface';
-import { LanguagesActions } from '@app/shared/state/user/actions';
-import { getSelectedLanguage } from '@app/shared/state/user/selectors';
-
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-profile-language',
   templateUrl: './profile-language.component.html',
   styleUrls: ['./profile-language.component.scss']
 })
-export class ProfileLanguageComponent implements OnInit {
+export class ProfileLanguageComponent implements OnInit, OnChanges {
+  @Input() language: Language = {} as Language;
+  @Input() user: User = {} as User;
+  @Output() save: EventEmitter<User> = new EventEmitter();
+  @Output() update: EventEmitter<User> = new EventEmitter();
+
   rForm: FormGroup;
-  language: Language;
   languageLevels: LanguageLevel[];
   languageNames: LanguageName[];
-  isNew: boolean = false;
 
-  constructor(
-    private store: Store<IStore>,
-    private route: ActivatedRoute,
-    private router: Router,
-  ) {
-    this.store.select(getSelectedLanguage).subscribe(language => {
-      if (!language) return;
-      this.language = language;
-      this.loadFormInstance();
-    });
-    this.route.params.subscribe(params => {
-      this.isNew = !params.uid;
-      if (this.isNew) {
-        this.store.dispatch(LanguagesActions.newLanguage());
-      } else {
-        this.store.dispatch(LanguagesActions.editLanguage({uid:+params.uid}));
-      }
-    });
-  }
+  constructor() {}
   ngOnInit() {
     this.loadSelectProperties();
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    let language = {} as Language;
+    if (this.hasChangeLanguage(changes.language)) {
+      language = changes.language.currentValue;
+    }
+    this.loadFormInstance(language);
+  }
+  private hasChangeLanguage(language) {
+    return language && language.currentValue;
   }
   public loadSelectProperties(): void {
     this.languageLevels = MockData.LANGUAGES_LEVEL;
     this.languageNames = MockData.LANGUAGES_NAME;
   }
 
-  public loadFormInstance(): void {
+  public loadFormInstance(language: Language): void {
     this.rForm = new FormGroup({
-      level: new FormControl(this.language.level, [Validators.required]),
-      name: new FormControl(this.language.name, [Validators.required]),
-      date: new FormControl(this.language.date, [
+      level: new FormControl(language.level, [Validators.required]),
+      name: new FormControl(language.name, [Validators.required]),
+      date: new FormControl(language.date, [
         Validators.required,
         dateValidator()
       ])
@@ -70,13 +71,33 @@ export class ProfileLanguageComponent implements OnInit {
   compareName(option1, option2) {
     return option1.uid === (option2 && option2.uid);
   }
-  private update(language: Language) {
-    this.store.dispatch(LanguagesActions.updateLanguage({language}));
+  private _update(language: Language) {
+    const languages = this.user.languages.map(_language =>
+      _language.uid === language.uid ? language : _language
+    );
+    const user = {
+      ...this.user,
+      languages
+    };
+    this.update.emit(user);
   }
-  private save(language: Language) {
-    this.store.dispatch(LanguagesActions.saveLanguage({language}));
+  private _save(language: Language) {
+    const _language = MockData.fakeIncreaseID<Language>(
+      this.user.languages,
+      language
+    );
+    const languages = [...this.user.languages, _language];
+    const user = {
+      ...this.user,
+      languages
+    };
+    this.save.emit(user);
   }
+
   saveOrUpdate(language: Language) {
-    this.isNew ? this.save(language) : this.update(language);
+    this.isNew() ? this._save(language) : this._update(language);
+  }
+  public isNew(): boolean {
+    return !!!this.language;
   }
 }

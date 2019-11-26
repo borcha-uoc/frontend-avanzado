@@ -1,72 +1,91 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Study, VocationalStudy, CollegeStudy } from 'src/app/shared/models/study.model';
+import {
+  Study,
+  VocationalStudy,
+  CollegeStudy
+} from 'src/app/shared/models/study.model';
 import { MockData } from 'src/app/shared/mock-data';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { IStore } from '@app/shared/state/store.interface';
-import { ProfileActions, StudiesActions, LanguagesActions } from '@app/shared/state/user/actions';
-import { getSelectedStudy } from '@app/shared/state/user/selectors';
-
-
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-profile-study',
   templateUrl: './profile-study.component.html',
   styleUrls: ['./profile-study.component.scss']
 })
-export class ProfileStudyComponent {
-  studiesForm: FormGroup;
+export class ProfileStudyComponent implements OnChanges {
+  @Input() study: VocationalStudy | CollegeStudy;
+  @Input() user: User;
+  @Output() save: EventEmitter<User> = new EventEmitter();
+  @Output() update: EventEmitter<User> = new EventEmitter();
+  rForm: FormGroup;
   options = MockData.TYPE_STUDIES;
-  study: Observable<Study>;
-  isNew: boolean = false;
 
-  constructor(
-    private store: Store<IStore>,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
-    this.study = this.store.select(getSelectedStudy);
-    this.study.subscribe(study => {
-      if (!study) return;
-      this.studiesForm = new FormGroup({
-        option: new FormControl(study.level, [Validators.required])
-      });
+  constructor() {}
+  ngOnChanges(changes: SimpleChanges) {
+    let study = {} as Study;
+    if (this.hasChangeStudy(changes.study)) {
+      study = changes.study.currentValue;
+    }
+    this.loadFormInstance(study);
+  }
+  private loadFormInstance(study: Study) {
+    this.rForm = new FormGroup({
+      option: new FormControl(study.level, [Validators.required])
     });
-    this.route.params.subscribe(params => {
-      this.isNew = !params.uid;
-      if (this.isNew) {
-        this.store.dispatch(StudiesActions.newStudy());
-      } else {
-        this.store.dispatch(StudiesActions.editStudy({uid:+params.uid}));
-      }
-    });
+  }
+  private hasChangeStudy(study) {
+    return study && study.currentValue;
   }
 
   compareOption(option1, option2) {
     return option1.uid === (option2 && option2.uid);
   }
-  private update(study: VocationalStudy | CollegeStudy) {
-    this.store.dispatch(StudiesActions.updateStudy({study}));
+  private _update(study: Study) {
+    const studies = this.user.studies.map(_study =>
+      _study.uid === study.uid ? study : _study
+    ) as (VocationalStudy | CollegeStudy)[];
+    const user = {
+      ...this.user,
+      studies
+    };
+    this.update.emit(user);
   }
-  private save(study: VocationalStudy | CollegeStudy) {
-    this.store.dispatch(StudiesActions.saveStudy({study}));
+  private _save(study: Study) {
+    const _study = MockData.fakeIncreaseID<Study>(this.user.studies, study);
+    const studies = [...this.user.studies, _study] as (
+      | VocationalStudy
+      | CollegeStudy)[];
+    const user = {
+      ...this.user,
+      studies
+    };
+    this.save.emit(user);
   }
 
-  saveOrUpdate(study: VocationalStudy | CollegeStudy) {
-    study.level = this.studiesForm.get('option').value;
-    this.isNew ? this.save(study) : this.update(study);
+  saveOrUpdate(_study: VocationalStudy | CollegeStudy) {
+    const study = {
+      ..._study,
+      level: this.rForm.get('option').value
+    };
+    this.isNew() ? this._save(study) : this._update(study);
+  }
+  public isNew(): boolean {
+    return !!!this.study;
   }
   public isSelectVocational(): boolean {
-    const value = this.studiesForm.get('option').value;
+    const value = this.rForm.get('option').value;
     return value && value.uid === MockData.TYPE_STUDIES[0].uid;
   }
   public isSelectUniversity(): boolean {
-    const value = this.studiesForm.get('option').value;
+    const value = this.rForm.get('option').value;
     return value && value.uid === MockData.TYPE_STUDIES[1].uid;
-  }
-  public backProfile() {
-    this.router.navigate(['/admin/profile']);
   }
 }
