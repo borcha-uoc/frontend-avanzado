@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './material.module';
+
 /*
 import { TranslateModule } from '@ngx-translate/core';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'; */
@@ -21,6 +24,8 @@ const declarations = [AppComfirmComponent, AdminLayoutComponent];
 const exports = [
   CommonModule,
   FormsModule,
+  FlexLayoutModule,
+  MaterialModule,
   ReactiveFormsModule,
   RouterModule,
   AppComfirmComponent,
@@ -29,7 +34,7 @@ const exports = [
 const providers = [AppConfirmService];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, FlexLayoutModule, MaterialModule, ReactiveFormsModule, RouterModule],
   entryComponents: [AppComfirmComponent],
   providers,
   declarations,
