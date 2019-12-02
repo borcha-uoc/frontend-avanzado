@@ -1,0 +1,21 @@
+
+mat-card{
+  padding:0;
+  margin: 10px;
+  width: 350px;
+}
+
+mat-card-header{
+  background: #673ab7;
+  padding: 10px 1px;
+  color:white;
+}
+
+mat-card-content {
+  padding: 10px;
+}
+
+mat-card.login mat-card-actions {
+  margin: 10px;
+  padding-bottom: 10px;
+}
