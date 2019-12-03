@@ -12,6 +12,8 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'; */
 // COMPONENTS
 import { AppComfirmComponent } from './services/app-confirm/app-confirm.component';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { TopnavComponent } from './components/topnav/topnav.component';
 
 // DIRECTIVES
 
@@ -20,7 +22,7 @@ import { AdminLayoutComponent } from './components/admin-layout/admin-layout.com
 // SERVICES
 import { AppConfirmService } from './services/app-confirm/app-confirm.service';
 
-const declarations = [AppComfirmComponent, AdminLayoutComponent];
+const declarations = [AppComfirmComponent, AdminLayoutComponent, SidebarComponent, TopnavComponent];
 const exports = [
   CommonModule,
   FormsModule,
@@ -29,7 +31,9 @@ const exports = [
   ReactiveFormsModule,
   RouterModule,
   AppComfirmComponent,
-  AdminLayoutComponent
+  AdminLayoutComponent,
+  SidebarComponent,
+  TopnavComponent
 ];
 const providers = [AppConfirmService];
 
