@@ -21,8 +21,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   MatCardModule,
   MatProgressSpinnerModule,
   MatRippleModule,
-  MatDialogModule
+  MatDialogModule,
 } from '@angular/material';
+
+import {MatTableModule } from '@angular/material/table'
 
 @NgModule({
   imports: [
@@ -38,7 +40,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatTooltipModule,
     MatListModule,
     MatDialogModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -53,7 +56,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatTooltipModule,
     MatListModule,
     MatDialogModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule,
   ],
 })
 
