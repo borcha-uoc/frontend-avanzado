@@ -15,6 +15,9 @@ import { User } from 'src/app/shared/models/user.model';
   templateUrl: './offers-list.component.html'
 })
 export class OffersListComponent implements OnChanges {
+  displayedColumns: string[] = ['job.name', 'company.name', 'category.name', 'date', 'province.name', 'municipe.name', 'subscribe', 'actions' ];
+
+
   @Input() user: User;
   @Input() offers: Offer[];
   offersStudy: Offer[] = [];
