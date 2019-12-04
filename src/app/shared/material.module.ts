@@ -9,7 +9,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   MatListModule,
   MatTooltipModule,
   MatOptionModule,
-  MatSelectModule,
   MatMenuModule,
   MatSnackBarModule,
   MatGridListModule,
@@ -24,7 +23,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   MatDialogModule,
 } from '@angular/material';
 
-import {MatTableModule } from '@angular/material/table'
+import {MatTableModule, MatTextColumn } from '@angular/material/table'
+import {MatSelectModule } from '@angular/material/select'; 
 
 @NgModule({
   imports: [
@@ -42,6 +42,7 @@ import {MatTableModule } from '@angular/material/table'
     MatDialogModule,
     MatToolbarModule,
     MatTableModule,
+    MatSelectModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -58,6 +59,7 @@ import {MatTableModule } from '@angular/material/table'
     MatDialogModule,
     MatToolbarModule,
     MatTableModule,
+    MatSelectModule,
   ],
 })
 
