@@ -9,6 +9,8 @@ import { User } from 'src/app/shared/models/user.model';
   templateUrl: './offers-profile.component.html'
 })
 export class OffersProfileComponent implements OnChanges {
+  displayedColumns: string[] = ['job.name', 'company.name', 'category.name', 'date', 'province.name', 'municipe.name', 'actions' ];
+
   @Input() user: User;
   offers: Offer[] = [];
   constructor() {}
