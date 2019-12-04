@@ -51,26 +51,47 @@
 
 <h3 class="mat-h3">Otras Ofertas</h3>
 
-<table class="table table-bordered table-striped">
-  <thead class="thead-light">
-    <tr>
-      <th>Puesto</th>
-      <th>Empresa</th>
-      <th>Familia</th>
-      <th>Fecha</th>
-      <th>Provincia</th>
-      <th>Municipio</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let offer of offersOther">
-      <td>{{ offer.job.name }}</td>
-      <td>{{ offer.company.name }}</td>
-      <td>{{ offer.category.name }}</td>
-      <td>{{ offer.date }}</td>
-      <td>{{ offer.province.name }}</td>
-      <td>{{ offer.municipe.name }}</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+
+<mat-table [dataSource]="offersOther" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="job.name">
+    <mat-header-cell *matHeaderCellDef> Puesto </mat-header-cell>
+    <mat-cell *matCellDef="let offer"> {{ offer.job.name }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="company.name">
+    <mat-header-cell *matHeaderCellDef> Empresa </mat-header-cell>
+    <mat-cell *matCellDef="let offer"> {{ offer.company.name }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="category.name">
+    <mat-header-cell *matHeaderCellDef> Familia </mat-header-cell>
+    <mat-cell *matCellDef="let offer"> {{ offer.category.name }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+    <mat-cell *matCellDef="let offer"> {{ offer.date }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="province.name">
+    <mat-header-cell *matHeaderCellDef> Provincia </mat-header-cell>
+    <mat-cell *matCellDef="let offer"> {{ offer.province.name }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="municipe.name">
+    <mat-header-cell *matHeaderCellDef> Municipio </mat-header-cell>
+    <mat-cell *matCellDef="let offer"> {{ offer.municipe.name }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedOtherColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedOtherColumns;"></mat-row>
+</mat-table>
+
+
+
+
+
+
+
+
