@@ -7,6 +7,11 @@ import { User } from 'src/app/shared/models/user.model';
   styleUrls: ['./profile-student.component.scss']
 })
 export class ProfileStudentComponent {
+  displayedColumnsStudies: string[] = [ 'study.level', 'study.grade', 'study.title', 'study.institution', 'study.date', 'study.certificate', 'study.bilingue', 'study.dual', 'actions' ];
+  displayedColumnsLanguages: string[] = [ 'job.name', 'company.name', 'category.name', 'actions' ]
+
+
+
   @Input() user: User;
   // tslint:disable-next-line: no-output-on-prefix
   @Output() onDeleteStudy: EventEmitter<User> = new EventEmitter();
