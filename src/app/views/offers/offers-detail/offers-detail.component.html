@@ -1,12 +1,12 @@
-<h2>
+<h2 class="mat-h2">
   Offers Detail
 </h2>
 
 <pre>{{ offer | json }} </pre>
 
-<button *ngIf="!isSubscribe()" class="btn btn-primary" (click)="subscribe()">
+<button mat-raised-button color="primary" *ngIf="!isSubscribe()" (click)="subscribe()">
   Inscribirse
 </button>
-<button *ngIf="isSubscribe()" class="btn btn-danger" (click)="unsubscribe()">
+<button mat-raised-button color="primary" *ngIf="isSubscribe()" (click)="unsubscribe()">
   Eliminar oferta
 </button>
