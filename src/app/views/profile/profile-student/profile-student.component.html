@@ -11,54 +11,52 @@
     </div>
   </div>
 
-  <section id="datosPersonales" class="float-left">
-    <table>
-      <tbody>
-        <tr>
-          <th>Email</th>
-          <td>{{ user.email }}</td>
-        </tr>
-        <tr>
-          <th>Fecha de nacimiento</th>
-          <td>{{ user.birthdate }}</td>
-        </tr>
-        <tr>
-          <th>Tel&eacute;fono</th>
-          <td>{{ user.phone }}</td>
-        </tr>
-        <tr>
-          <th>NIF/NIE</th>
-          <td>{{ user.documentNumber }}</td>
-        </tr>
-        <tr>
-          <th>Permisos de conducir</th>
-          <td>{{ user.license }}</td>
-        </tr>
-        <tr>
-          <th>Direccion</th>
-          <td>{{ user.address | json }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <a [routerLink]="['/admin/profile/profile-student/account']">Modificar</a>
-  </section>
-  <div id="otra_info" class="float-left">
-    <form>
-      <div class="float-left">
-        <label for="about-me">Acerca de mi...</label><br />
-        <textarea readonly="true" id="about-me" name="about-me">{{
-          user.aboutMe
-        }}</textarea>
-      </div>
-      <div class="float-left">
-        <label for="other">Otras competencias</label> <br />
+  <section fxLayout="column" fxLayoutAlign=" start" id="datosPersonales" class="float-left">
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="text" [value]="user.email" disabled/>
+    </mat-form-field>
 
-        <textarea readonly="true" id="other" name="other">{{
-          user.otherCompetences
-        }}</textarea>
-      </div>
-    </form>
-  </div>
+    <mat-form-field>
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input matInput type="text" [value]="user.birthdate" disabled/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Tel&eacute;fono</mat-label>
+      <input matInput type="text" [value]="user.phone" disabled/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>NIF/NIE</mat-label>
+      <input matInput type="text" [value]="user.documentNumber" disabled/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Permisos de conducir</mat-label>
+      <input matInput type="text" [value]="user.license" disabled/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Direccion</mat-label>
+      <textarea matInput type="text" [value]="user.address | json" disabled></textarea>
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <mat-form-field>
+      <mat-label>Acerca de mi...</mat-label>
+      <textarea matInput type="text" [value]="user.aboutMe" disabled></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>Otras competencias</mat-label>
+      <textarea matInput type="text" [value]="user.otherCompetences" disabled></textarea>
+    </mat-form-field>
+
+    <a mat-raised-button color="primary" [routerLink]="['/admin/profile/profile-student/account']">Modificar</a>
+  </section>
 
   <section style="clear:both;padding-bottom:4em;"></section>
 
