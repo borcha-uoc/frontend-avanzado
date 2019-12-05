@@ -21,10 +21,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   MatProgressSpinnerModule,
   MatRippleModule,
   MatDialogModule,
+  MatSelectModule,
+  MatTableModule,
 } from '@angular/material';
-
-import {MatTableModule, MatTextColumn } from '@angular/material/table'
-import {MatSelectModule } from '@angular/material/select'; 
 
 @NgModule({
   imports: [
@@ -41,8 +40,11 @@ import {MatSelectModule } from '@angular/material/select';
     MatListModule,
     MatDialogModule,
     MatToolbarModule,
+    MatOptionModule,
     MatTableModule,
     MatSelectModule,
+    MatCheckboxModule,
+
   ],
   exports: [
     MatFormFieldModule,
@@ -58,8 +60,10 @@ import {MatSelectModule } from '@angular/material/select';
     MatListModule,
     MatDialogModule,
     MatToolbarModule,
+    MatOptionModule,
     MatTableModule,
     MatSelectModule,
+    MatCheckboxModule,
   ],
 })
 

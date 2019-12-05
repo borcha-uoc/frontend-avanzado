@@ -1,28 +1,28 @@
 <form fxLayout="column" fxLayoutAlign=" start" [formGroup]="rForm" (submit)="submit()">
   <mat-form-field>
     <mat-label for="level">Nivel</mat-label>
-    <select matNativeControl
+    <mat-select matNativeControl
       [compareWith]="compareLevel"
       name="level"
       formControlName="level"
     >
-      <option [ngValue]="level" *ngFor="let level of languageLevels">
-        {{ level.name }}</option
+      <mat-option [value]="level" *ngFor="let level of languageLevels">
+        {{ level.name }}</mat-option
       >
-    </select>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label for="name">Idioma</mat-label>
-    <select matNativeControl
+    <mat-select matNativeControl
       name="name"
       formControlName="name"
       [compareWith]="compareName"
     >
-      <option [ngValue]="name" *ngFor="let name of languageNames">
-        {{ name.name }}</option
+      <mat-option [value]="name" *ngFor="let name of languageNames">
+        {{ name.name }}</mat-option
       >
-    </select>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field>
