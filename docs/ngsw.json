@@ -1,0 +1,116 @@
+{
+  "configVersion": 1,
+  "timestamp": 1578829465151,
+  "index": "/frontend-avanzado/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/frontend-avanzado/0-es2015.0696416842c6aae0d84d.js",
+        "/frontend-avanzado/0-es5.0696416842c6aae0d84d.js",
+        "/frontend-avanzado/1-es2015.7835eb31ec044b28ad30.js",
+        "/frontend-avanzado/1-es5.7835eb31ec044b28ad30.js",
+        "/frontend-avanzado/2-es2015.7458638e531be1de3c28.js",
+        "/frontend-avanzado/2-es5.7458638e531be1de3c28.js",
+        "/frontend-avanzado/3-es2015.0deb5479a99716cc8de6.js",
+        "/frontend-avanzado/3-es5.0deb5479a99716cc8de6.js",
+        "/frontend-avanzado/4-es2015.708b5ac761d2195c7c87.js",
+        "/frontend-avanzado/4-es5.708b5ac761d2195c7c87.js",
+        "/frontend-avanzado/5-es2015.454b0ae0922e037561db.js",
+        "/frontend-avanzado/5-es5.454b0ae0922e037561db.js",
+        "/frontend-avanzado/6-es2015.e22d6ad72fb44a790e46.js",
+        "/frontend-avanzado/6-es5.e22d6ad72fb44a790e46.js",
+        "/frontend-avanzado/common-es2015.ce374e49c711650d5835.js",
+        "/frontend-avanzado/common-es5.ce374e49c711650d5835.js",
+        "/frontend-avanzado/favicon.ico",
+        "/frontend-avanzado/index.html",
+        "/frontend-avanzado/main-es2015.894e7cfde2fa7e2a25ed.js",
+        "/frontend-avanzado/main-es5.894e7cfde2fa7e2a25ed.js",
+        "/frontend-avanzado/manifest.webmanifest",
+        "/frontend-avanzado/polyfills-es2015.1d4eb694b29d8a55fbcb.js",
+        "/frontend-avanzado/polyfills-es5.fdf0cfc14d1cabe4efca.js",
+        "/frontend-avanzado/runtime-es2015.237f7f5e7236df02b84d.js",
+        "/frontend-avanzado/runtime-es5.237f7f5e7236df02b84d.js",
+        "/frontend-avanzado/styles.ee7d0997e1fdb2716d68.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/frontend-avanzado/assets/icons/icon-128x128.png",
+        "/frontend-avanzado/assets/icons/icon-144x144.png",
+        "/frontend-avanzado/assets/icons/icon-152x152.png",
+        "/frontend-avanzado/assets/icons/icon-192x192.png",
+        "/frontend-avanzado/assets/icons/icon-384x384.png",
+        "/frontend-avanzado/assets/icons/icon-512x512.png",
+        "/frontend-avanzado/assets/icons/icon-72x72.png",
+        "/frontend-avanzado/assets/icons/icon-96x96.png",
+        "/frontend-avanzado/assets/img/perfil.png",
+        "/frontend-avanzado/assets/img/uoc_logo.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/frontend-avanzado/0-es2015.0696416842c6aae0d84d.js": "91a44eb025cd6702776a69dea7b6b8302c69a342",
+    "/frontend-avanzado/0-es5.0696416842c6aae0d84d.js": "bed08b05d84b289896b1009e0e658d06c4f7ffd0",
+    "/frontend-avanzado/1-es2015.7835eb31ec044b28ad30.js": "cc18f4088bd15f47c1ccdd3bdf5351a7957fa7de",
+    "/frontend-avanzado/1-es5.7835eb31ec044b28ad30.js": "92dfeb88c29a5bcc4816525d73b89507b01ab503",
+    "/frontend-avanzado/2-es2015.7458638e531be1de3c28.js": "30195a51040c18bdbc7347fd0e4aa2f2925a37db",
+    "/frontend-avanzado/2-es5.7458638e531be1de3c28.js": "a276b2c483f44ab8095e967cd859347efea0b95f",
+    "/frontend-avanzado/3-es2015.0deb5479a99716cc8de6.js": "0b1b3939cbfeddcdf5cbe80fa4365ff34162bb5e",
+    "/frontend-avanzado/3-es5.0deb5479a99716cc8de6.js": "457ceecb0e07bbf115c0b3a6689f6370aa739c4b",
+    "/frontend-avanzado/4-es2015.708b5ac761d2195c7c87.js": "3054294a49c4337e18900d80d4d16bc0c547d439",
+    "/frontend-avanzado/4-es5.708b5ac761d2195c7c87.js": "c8d45c3dc55ae3fe0997af3aaaacb84249109a07",
+    "/frontend-avanzado/5-es2015.454b0ae0922e037561db.js": "a9473fbb149b8790a1df2e7ff467cf94c77a1ec0",
+    "/frontend-avanzado/5-es5.454b0ae0922e037561db.js": "ede4467eb2d6d638688f6b6dd174be8f724f9838",
+    "/frontend-avanzado/6-es2015.e22d6ad72fb44a790e46.js": "443be54aa6e87ce32f135f5ff34e90d22da7a7a8",
+    "/frontend-avanzado/6-es5.e22d6ad72fb44a790e46.js": "114307727ef85759db0dfc19d2c4aa880b00daa0",
+    "/frontend-avanzado/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/frontend-avanzado/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/frontend-avanzado/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/frontend-avanzado/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/frontend-avanzado/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/frontend-avanzado/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/frontend-avanzado/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/frontend-avanzado/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/frontend-avanzado/assets/img/perfil.png": "c34d68aa614df190342bf4ccfb05fabce3561034",
+    "/frontend-avanzado/assets/img/uoc_logo.png": "a8268228316a687fc11a0ecbedb2507aedcccf39",
+    "/frontend-avanzado/common-es2015.ce374e49c711650d5835.js": "d632e31402624b4f51dc23ccb2bce1180f1e61dc",
+    "/frontend-avanzado/common-es5.ce374e49c711650d5835.js": "03892750ba22b5e76e0e0347091cc93cd28057a3",
+    "/frontend-avanzado/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/frontend-avanzado/index.html": "1185a8a9668237d2383a5fa1c5a3d823de164a11",
+    "/frontend-avanzado/main-es2015.894e7cfde2fa7e2a25ed.js": "2d553ee2f1064f48bb689de9ea51e8049ef3ed95",
+    "/frontend-avanzado/main-es5.894e7cfde2fa7e2a25ed.js": "34797dba1ffd78124b8eeba7388744edb65dc7e6",
+    "/frontend-avanzado/manifest.webmanifest": "cb1510963c4dc2e2c0c12ada9a3bf935928c679b",
+    "/frontend-avanzado/polyfills-es2015.1d4eb694b29d8a55fbcb.js": "b1cfcae96c43772b80e64d131b00ffa081f6c020",
+    "/frontend-avanzado/polyfills-es5.fdf0cfc14d1cabe4efca.js": "3a390bdf7331f6d9e18b87b9db5492faf196c5a7",
+    "/frontend-avanzado/runtime-es2015.237f7f5e7236df02b84d.js": "d484563ec4df0239ede4f41ba50eabaf1a237e0e",
+    "/frontend-avanzado/runtime-es5.237f7f5e7236df02b84d.js": "83f4a978b7b05ef8d8caeb57559ece7ca38d0dfe",
+    "/frontend-avanzado/styles.ee7d0997e1fdb2716d68.css": "1e0cd2a7b4ba08d58903541f835534e2d2433899"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
