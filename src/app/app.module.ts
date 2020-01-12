@@ -19,7 +19,7 @@ import { environment } from '../environments/environment';
     CoreModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(FakeBackendService, {
+    environment.production ? [] : HttpClientInMemoryWebApiModule.forRoot(FakeBackendService, {
       dataEncapsulation: false
     }),
     BrowserAnimationsModule,
