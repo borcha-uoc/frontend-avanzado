@@ -10,19 +10,18 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'; */
 
 // COMPONENTS
-import { AppComfirmComponent } from './services/app-confirm/app-confirm.component';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TopnavComponent } from './components/topnav/topnav.component';
 
 // DIRECTIVES
+import { FontSizeDirective } from './directives/fontsize.directive';
 
 // PIPES
 
 // SERVICES
-import { AppConfirmService } from './services/app-confirm/app-confirm.service';
 
-const declarations = [AppComfirmComponent, AdminLayoutComponent, SidebarComponent, TopnavComponent];
+const declarations = [AdminLayoutComponent, SidebarComponent, TopnavComponent, FontSizeDirective];
 const exports = [
   CommonModule,
   FormsModule,
@@ -30,16 +29,15 @@ const exports = [
   MaterialModule,
   ReactiveFormsModule,
   RouterModule,
-  AppComfirmComponent,
   AdminLayoutComponent,
   SidebarComponent,
   TopnavComponent
 ];
-const providers = [AppConfirmService];
+const providers = [];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, FlexLayoutModule, MaterialModule, ReactiveFormsModule, RouterModule],
-  entryComponents: [AppComfirmComponent],
+  imports: [CommonModule, FormsModule, FlexLayoutModule, MaterialModule, ReactiveFormsModule, RouterModule ],
+  entryComponents: [],
   providers,
   declarations,
   exports
