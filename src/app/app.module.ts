@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './shared/core.module';
@@ -13,6 +14,7 @@ import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     SharedModule,
     CoreModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
