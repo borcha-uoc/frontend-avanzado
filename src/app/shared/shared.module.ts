@@ -22,7 +22,7 @@ import { FontSizeDirective } from './directives/fontsize.directive';
 // SERVICES
 
 const declarations = [AdminLayoutComponent, SidebarComponent, TopnavComponent, FontSizeDirective];
-const exports = [
+const moduleExports = [
   CommonModule,
   FormsModule,
   FlexLayoutModule,
@@ -40,6 +40,6 @@ const providers = [];
   entryComponents: [],
   providers,
   declarations,
-  exports
+  exports: moduleExports
 })
 export class SharedModule {}
