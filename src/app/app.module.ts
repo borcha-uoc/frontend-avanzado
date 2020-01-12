@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './shared/core.module';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { rootRouterConfig } from './app-routing';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -17,7 +17,7 @@ import { environment } from '../environments/environment';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     SharedModule,
     CoreModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: false }),
+    RouterModule.forRoot(rootRouterConfig, { preloadingStrategy: PreloadAllModules, useHash: false }),
     HttpClientModule,
     environment.production ? [] : HttpClientInMemoryWebApiModule.forRoot(FakeBackendService, {
       dataEncapsulation: false
