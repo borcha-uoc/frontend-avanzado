@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1578829465151,
+  "timestamp": 1578829875547,
   "index": "/frontend-avanzado/index.html",
   "assetGroups": [
     {
@@ -85,9 +85,9 @@
     "/frontend-avanzado/common-es2015.ce374e49c711650d5835.js": "d632e31402624b4f51dc23ccb2bce1180f1e61dc",
     "/frontend-avanzado/common-es5.ce374e49c711650d5835.js": "03892750ba22b5e76e0e0347091cc93cd28057a3",
     "/frontend-avanzado/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/frontend-avanzado/index.html": "1185a8a9668237d2383a5fa1c5a3d823de164a11",
-    "/frontend-avanzado/main-es2015.894e7cfde2fa7e2a25ed.js": "2d553ee2f1064f48bb689de9ea51e8049ef3ed95",
-    "/frontend-avanzado/main-es5.894e7cfde2fa7e2a25ed.js": "34797dba1ffd78124b8eeba7388744edb65dc7e6",
+    "/frontend-avanzado/index.html": "de65369919e17293a3c99e8593b4586825c8aa07",
+    "/frontend-avanzado/main-es2015.894e7cfde2fa7e2a25ed.js": "931c4f4a5f197aa730c5e5f524fce987906d0ed1",
+    "/frontend-avanzado/main-es5.894e7cfde2fa7e2a25ed.js": "ab0efb00141dac9bb06cf7fc31ed52d5f1666f65",
     "/frontend-avanzado/manifest.webmanifest": "cb1510963c4dc2e2c0c12ada9a3bf935928c679b",
     "/frontend-avanzado/polyfills-es2015.1d4eb694b29d8a55fbcb.js": "b1cfcae96c43772b80e64d131b00ffa081f6c020",
     "/frontend-avanzado/polyfills-es5.fdf0cfc14d1cabe4efca.js": "3a390bdf7331f6d9e18b87b9db5492faf196c5a7",
