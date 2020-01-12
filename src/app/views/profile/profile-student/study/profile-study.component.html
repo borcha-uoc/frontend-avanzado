@@ -1,4 +1,4 @@
-<form [formGroup]="rForm" (submit)="submit()">
+<form [formGroup]="rForm">
   <mat-form-field>
     <mat-select
       [compareWith]="compareOption"
@@ -16,13 +16,11 @@
     *ngIf="isSelectVocational()"
     [study]="study"
     (onSave)="saveOrUpdate($event)"
-    (onExit)="exit($event)"
   ></app-vocational-form>
 
   <app-university-degree-form
     *ngIf="isSelectUniversity()"
     [study]="study"
     (onSave)="saveOrUpdate($event)"
-    (onExit)="exit($event)"
   ></app-university-degree-form>
 </form>
